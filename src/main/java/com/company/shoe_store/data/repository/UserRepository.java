@@ -1,14 +1,16 @@
-package com.company.shoe_store.data.dao;
+package com.company.shoe_store.data.repository;
 
 import com.company.shoe_store.data.entity.User;
 import com.company.shoe_store.data.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface UserDao extends JpaRepository<User, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 
     User findUserById(@Param("id") Integer id);
 

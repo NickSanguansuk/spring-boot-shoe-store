@@ -29,14 +29,23 @@ Comment out the "spring-boot-starter-security" or (username: user, password: aut
 
 ---------- ---------- ---------- ---------- ---------- 
 
+Set up JSP and Thymeleaf together in this Spring Boot project
+
 Link the project to the database "shoe_store dev-mariadb"
 
 Create all entities
-Create all dao
+Create all repositories
+
+Create files in security package
+Create RootConfig.java & DatabaseConfig & SecurityConfig
+Create files in jsp/login folder
+Create LoginController
+Create files in jsp/error folder
+Create CustomErrorController
 
 ---------- ---------- ---------- ---------- ----------
 
-Set up JSP and Thymeleaf together in this Spring Boot project
+
 
 ---------- ---------- ---------- ---------- ----------
 
@@ -53,6 +62,14 @@ Stop    ---> Ctrl+C
 [_ URL _]
 
 http://localhost:8080
+
+http://localhost:8080/actuator/health
+http://localhost:8080/actuator/info
+http://localhost:8080/actuator/loggers
+http://localhost:8080/actuator/beans
+
+http://localhost:8080/dummy			---> Testing for error 404
+http://localhost:8080/search/detail?id=11 	---> Testing for exception thrown
 
 [_ Resources _]
 

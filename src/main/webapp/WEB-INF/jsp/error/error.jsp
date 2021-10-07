@@ -5,24 +5,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>General Error Page</title>
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
 <header>
-    <jsp:include page="include/header.jsp"/>
-    <h1>Home Page</h1>
+    <h1>Error - General</h1>
 </header>
 <main>
     <section>
-        <h2>Home Page topic</h2>
-        <p>This is the Home Page context.</p>
+        <c:if test="${not empty message}">
+            <p>${message}</p>
+        </c:if>
+        <c:if test="${not empty stackTrace}">
+            <br/>
+            <p>${stackTrace}</p>
+        </c:if>
+    </section>
+    <section>
+        <br>
+        <a href="/">Go to Home Page</a>
+        <br>
     </section>
 </main>
 <footer>
-    <jsp:include page="include/footer.jsp"/>
+
 </footer>
 </body>
 </html>
