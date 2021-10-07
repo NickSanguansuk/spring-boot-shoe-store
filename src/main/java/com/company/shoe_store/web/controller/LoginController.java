@@ -28,7 +28,7 @@ public class LoginController {
 
         ModelAndView modelAndView = new ModelAndView("jsp/login/login");
 
-        int x = 1 / 0;
+        //int x = 1 / 0;
 
         return modelAndView;
     }
