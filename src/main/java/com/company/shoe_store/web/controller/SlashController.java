@@ -15,9 +15,9 @@ public class SlashController {
     public ModelAndView slash(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView response = new ModelAndView();
-        response.setViewName("index");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("jsp/index");
 
-        return response;
+        return modelAndView;
     }
 }
