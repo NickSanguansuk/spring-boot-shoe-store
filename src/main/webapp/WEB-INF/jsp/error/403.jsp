@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 500 Page</title>
+    <title>Error 403 Page</title>
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
 <header>
-    <h1>Error - 500 INTERNAL_SERVER_ERROR</h1>
+    <h1>Error - 403 FORBIDDEN</h1>
 </header>
 <main>
     <section>

@@ -26,7 +26,7 @@ public class LoginController {
     public ModelAndView loginGet(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView modelAndView = new ModelAndView("jsp/login/login");
+        ModelAndView modelAndView = new ModelAndView("login/login");
 
         //int x = 1 / 0;
 

@@ -8,22 +8,22 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 public class JspConfig {
-    @Value("${spring.my.view.prefix}")
-    private String prefix;
-
-    @Value("${spring.my.view.suffix}")
-    private String suffix;
-
-    @Value("${spring.my.view.view-names}")
-    private String viewNames;
-
-    @Bean
-    InternalResourceViewResolver jspViewResolver() {
-        final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix(prefix);
-        viewResolver.setSuffix(suffix);
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setViewNames(viewNames);
-        return viewResolver;
-    }
+    //@Value("${spring.my.view.prefix}")
+    //private String prefix;
+    //
+    //@Value("${spring.my.view.suffix}")
+    //private String suffix;
+    //
+    //@Value("${spring.my.view.view-names}")
+    //private String viewNames;
+    //
+    //@Bean
+    //InternalResourceViewResolver jspViewResolver() {
+    //    final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+    //    viewResolver.setPrefix(prefix);
+    //    viewResolver.setSuffix(suffix);
+    //    viewResolver.setViewClass(JstlView.class);
+    //    viewResolver.setViewNames(viewNames);
+    //    return viewResolver;
+    //}
 }

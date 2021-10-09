@@ -26,17 +26,21 @@ public class CustomErrorController implements ErrorController {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         System.out.println("---> " + status);
 
-        ModelAndView modelAndView = new ModelAndView("jsp/error/error");
+        //ModelAndView modelAndView = new ModelAndView("jsp/error/error");
+        ModelAndView modelAndView = new ModelAndView("error/error");
 
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
 
             if (statusCode == HttpStatus.FORBIDDEN.value()) {
-                modelAndView.setViewName("jsp/error/403");
+                //modelAndView.setViewName("jsp/error/403");
+                modelAndView.setViewName("error/403");
             } else if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                modelAndView.setViewName("jsp/error/404");
+                //modelAndView.setViewName("jsp/error/404");
+                modelAndView.setViewName("error/404");
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                modelAndView.setViewName("jsp/error/500");
+                //modelAndView.setViewName("jsp/error/500");
+                modelAndView.setViewName("error/500");
             }
         }
 
@@ -51,7 +55,8 @@ public class CustomErrorController implements ErrorController {
 
         String originalUri = (String) request.getAttribute("javax.servlet.forward.request_uri");
         System.out.println("---> Requested URL not found : " + request.getMethod() + " " + originalUri);
-        return "jsp/error/404";
+        //return "jsp/error/404";
+        return "error/404";
     }
 
     @ExceptionHandler(Exception.class)
@@ -64,7 +69,8 @@ public class CustomErrorController implements ErrorController {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         System.out.println("---> " + status);
 
-        ModelAndView modelAndView = new ModelAndView("jsp/error/exception");
+        //ModelAndView modelAndView = new ModelAndView("jsp/error/exception");
+        ModelAndView modelAndView = new ModelAndView("error/exception");
         String stackTrace = getHTMLStackTrace(ExceptionUtils.getStackFrames(ex));
         modelAndView.addObject("requestUrl", getRequestURL(request));
         modelAndView.addObject("message", ex.getMessage());

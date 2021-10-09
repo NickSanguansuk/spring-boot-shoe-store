@@ -17,7 +17,8 @@ public class IndexController {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("jsp/index");
+        //modelAndView.setViewName("jsp/index");
+        modelAndView.setViewName("index");
 
         return modelAndView;
     }
@@ -27,13 +28,15 @@ public class IndexController {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         "ser".charAt(30);
-        return "jsp/index";
+        //return "jsp/index";
+        return "index";
     }
 
     @PostMapping(value = {"/general_error"})
     public String triggerGeneralError(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        return "jsp/index";
+        //return "jsp/index";
+        return "index";
     }
 }
