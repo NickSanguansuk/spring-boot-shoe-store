@@ -57,7 +57,7 @@ public class LoginController {
     }
 
     //@RequestMapping(value = "login", method = RequestMethod.GET)
-    @GetMapping("/login")
+    @GetMapping(value =  {"", "/login"})
     public ModelAndView loginGet(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 

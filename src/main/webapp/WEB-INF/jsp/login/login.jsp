@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login / Login Page</title>
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
 <header>
     <jsp:include page="../include/header.jsp"/>
     <h1>Login Page</h1>
+    <br>
 </header>
 <main>
     <section>
@@ -48,6 +50,7 @@
     </section>
 </main>
 <footer>
+    <br>
     <jsp:include page="../include/footer.jsp"/>
 </footer>
 </body>

@@ -8,12 +8,14 @@
     <title>Home Page</title>
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles-index.css">
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
 <header>
     <jsp:include page="include/header.jsp"/>
     <h1>Home Page</h1>
+    <br>
 </header>
 <main>
     <section>
@@ -22,6 +24,7 @@
     </section>
 </main>
 <footer>
+    <br>
     <jsp:include page="include/footer.jsp"/>
 </footer>
 </body>

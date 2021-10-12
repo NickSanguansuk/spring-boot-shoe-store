@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exception Page</title>
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
 <header>
     <h1>Exception Thrown</h1>
+    <br>
 </header>
 <main>
     <section>

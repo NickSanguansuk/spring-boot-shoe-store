@@ -1,11 +1,15 @@
 
-p {
-    color: darkgreen;
+/* This is the General Styles */
+
+header, footer {
+    color: gray;
 }
 
+/* ########## Testing Section ########## */
 
-
-
+h1 {
+    color: darkblue;
+}
 
 
 

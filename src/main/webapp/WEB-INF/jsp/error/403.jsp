@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 403 Page</title>
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
 <header>
     <h1>Error - 403 FORBIDDEN</h1>
+    <br>
 </header>
 <main>
     <section>

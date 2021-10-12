@@ -27,9 +27,12 @@ public class UserController {
     //@Autowired
     private PasswordEncoder passwordEncoder;
 
+    // Constructors
+    // No-argument constructor
     public UserController() {
     }
 
+    // Specialized constructor
     @Autowired
     public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
