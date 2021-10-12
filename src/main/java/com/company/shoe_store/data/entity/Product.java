@@ -2,6 +2,7 @@ package com.company.shoe_store.data.entity;
 
 //import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,24 +20,30 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Basic
     @Column(name = "item_id", nullable = false)
     private Integer itemId;
 
+    @Basic
     @Column(name = "color", nullable = false)
     private String color;
 
+    @Basic
     @Column(name = "size", nullable = false, columnDefinition = "DECIMAL", precision = 3, scale = 1)
     private Double size;
 
+    @Basic
     @Column(name = "price", nullable = false, columnDefinition = "DECIMAL", precision = 10, scale = 2)
     private Double price;
 
+    @Basic
     @Column(name = "availability", nullable = false)
     private Integer availability;
 
     //@ManyToMany(mappedBy = "productsInOrder")
     //List<Order> orders;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "productObject", fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetails;
 

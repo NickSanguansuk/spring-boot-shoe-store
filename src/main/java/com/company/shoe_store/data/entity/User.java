@@ -2,6 +2,7 @@ package com.company.shoe_store.data.entity;
 
 //import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,42 +34,52 @@ public class User {
     private Integer id;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "email", nullable = false)
     private String email;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "password", nullable = false)
     private String password;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "phone", nullable = false)
     private String phone;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "address", nullable = false)
     private String address;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "city", nullable = false)
     private String city;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "state", nullable = false)
     private String state;
 
     //@Basic(optional = false, fetch = FetchType.LAZY)
+    @Basic
     @Column(name = "zip_code", nullable = false)
     private String zipCode;
 
     //@Basic(fetch = FetchType.LAZY)
+    @JsonManagedReference
     @OneToMany(mappedBy = "userObject", fetch = FetchType.LAZY)
     //@OneToMany(targetEntity = UserRole.class) // Error
     private List<UserRole> userRoles = new ArrayList<>();

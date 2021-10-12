@@ -27,26 +27,33 @@ public class Item {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Basic
     @Column(name = "brand", nullable = false)
     private String brand;
 
+    @Basic
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Basic
     @Column(name = "gender", nullable = false)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Basic
     @Column(name = "category", nullable = false)
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    @Basic
     @Column(name = "star_rating", columnDefinition = "DECIMAL", precision = 2, scale = 1)
     private Double starRating;
 
+    @Basic
     @Column(name = "review_count")
     private Integer reviewCount;
 
+    @Basic
     @Column(name = "description")
     private String description;
 

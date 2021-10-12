@@ -1,5 +1,6 @@
 package com.company.shoe_store.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class OrderDetail {
 
     //@Column(name = "orderId")
     //private Integer orderId;
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderIdKey")
     @JoinColumn(name = "order_id", nullable = false)
@@ -27,11 +29,13 @@ public class OrderDetail {
 
     //@Column(name = "productId")
     //private Integer productId;
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("productIdKey")
     @JoinColumn(name = "product_id", nullable = false)
     private Product productObject;
 
+    @Basic
     @Column(name = "quantity_ordered", nullable = false)
     private Integer quantityOrdered;
 

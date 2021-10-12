@@ -2,6 +2,8 @@ package com.company.shoe_store.data.entity;
 
 //import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,10 +31,12 @@ public class UserRole {
     //@Column(name = "userId")
     //private Integer userId;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User userObject;
 
+    @Basic
     @Column(name = "role", nullable = false)
     //@Enumerated(EnumType.ORDINAL)
     @Enumerated(EnumType.STRING)

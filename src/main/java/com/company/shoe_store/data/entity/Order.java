@@ -1,5 +1,6 @@
 package com.company.shoe_store.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +27,11 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Basic
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
 
+    @Basic
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -37,6 +40,7 @@ public class Order {
     //@Temporal(TemporalType.TIMESTAMP)
     //private Date orderedDate;
     // https://www.baeldung.com/jpa-java-time
+    @Basic
     @Column(name = "ordered_date", columnDefinition = "TIMESTAMP", nullable = false, updatable = false)
     private LocalDateTime orderedDate;
 
@@ -44,9 +48,11 @@ public class Order {
     //@Temporal(TemporalType.TIMESTAMP)
     //private Date shippedDate;
     // https://www.baeldung.com/jpa-java-time
+    @Basic
     @Column(name = "shipped_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime shippedDate;
 
+    @Basic
     @Column(name = "comments")
     private String comments;
 
@@ -57,6 +63,7 @@ public class Order {
     //        inverseJoinColumns = @JoinColumn(name = "productId"))
     //List<Product> productsInOrder;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "orderObject", fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetails;
 
