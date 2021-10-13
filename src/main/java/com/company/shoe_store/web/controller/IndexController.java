@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
 
-    //@GetMapping("/")
+    //@GetMapping(value = "/")
     @RequestMapping(value = { "", "/", "/index", "/index.html" })
     public ModelAndView index(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());

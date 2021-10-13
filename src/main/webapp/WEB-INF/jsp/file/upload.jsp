@@ -22,7 +22,7 @@
         <h2>File Upload section</h2>
         <p>This is the File Upload section.</p>
 
-        <form method="post" action="upload" enctype="multipart/form-data">
+        <form method="post" action="/file/upload" enctype="multipart/form-data">
             <label>
                 Put file description here:
                 <input type="text" name="text">

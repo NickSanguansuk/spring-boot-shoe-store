@@ -67,7 +67,7 @@
                             <td>${user.state}</td>
                             <td>${user.zipCode}</td>
                             <td>${user.userRoles}</td>
-                            <td><a href="detail?id=${user.id}">Details</a></td>
+                            <td><a href="/search/detail?id=${user.id}">Details</a></td>
                         </tr>
                     </c:forEach>
                 </table>

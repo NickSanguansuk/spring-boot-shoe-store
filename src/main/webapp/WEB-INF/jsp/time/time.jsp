@@ -21,7 +21,7 @@
         <h2>Time form</h2>
         <p>This is the Time form.</p>
 
-        <form action="time-submit" method="get">
+        <form action="/time/time-submit" method="get">
             <label>
                 Full Date:
                 <input type="text" name="fullDate">

@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/file")
+@RequestMapping(value = "/file")
 public class FileController {
 
     //@Autowired
@@ -36,10 +36,10 @@ public class FileController {
     public ModelAndView uploadGet(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView result = new ModelAndView();
-        result.setViewName("file/upload");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("file/upload");
 
-        return result;
+        return modelAndView;
     }
 
     //@RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -66,14 +66,14 @@ public class FileController {
         // Use our S3 library to write the file to S3
         s3.writeFile("shoe-store-bucket/images", file.getOriginalFilename(), targetFile);
 
-        ModelAndView result = new ModelAndView();
-        result.setViewName("file/upload");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("file/upload");
 
         modelMap.addAttribute("fileSubmitted", file);
-        //result.addObject("fileSubmitted", file);
-        result.addObject("imageName", file.getOriginalFilename());
+        //modelAndView.addObject("fileSubmitted", file);
+        modelAndView.addObject("imageName", file.getOriginalFilename());
 
-        return result;
+        return modelAndView;
     }
 
 

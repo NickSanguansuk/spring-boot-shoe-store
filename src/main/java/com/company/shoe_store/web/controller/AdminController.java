@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
-@RequestMapping("/admin")
+@RequestMapping(value = "/admin")
 public class AdminController {
 
-    @RequestMapping("/protected")
+    @RequestMapping(value = "/protected")
     public ModelAndView slash(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView response = new ModelAndView();
-        response.setViewName("admin/protected");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/protected");
 
-        return response;
+        return modelAndView;
     }
 
     //public String getCurrentUsername() {

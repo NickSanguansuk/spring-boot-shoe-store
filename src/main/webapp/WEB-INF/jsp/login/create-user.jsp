@@ -21,7 +21,7 @@
         <h2>Create-User form</h2>
         <p>This is the Create-User form.</p>
 
-        <form method="post" action="create-user">
+        <form method="post" action="/login/create-user">
 
             <c:forEach items="${errorMessages}" var="errorMessage">
                 <span style='color:red'>${errorMessage}</span>

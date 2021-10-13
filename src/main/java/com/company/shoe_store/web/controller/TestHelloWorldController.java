@@ -4,15 +4,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping(value = "/test")
 public class TestHelloWorldController {
 
-    @RequestMapping("/hello")
+    @RequestMapping(value = "/hello")
     public String hello() {
         return "Hello from Spring Boot - Project shoe-store";
     }
 
-    @RequestMapping("/goodbye")
+    @RequestMapping(value = "/goodbye")
     public String goodbye() {
         return "Goodbye from Spring Boot - Project shoe-store";
     }

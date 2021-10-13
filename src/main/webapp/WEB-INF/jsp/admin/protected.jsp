@@ -22,7 +22,7 @@
         <p>This is your Admin Protected section.</p>
     </section>
     <section>
-        <a href="../login/logout">Logout</a>
+        <a href="/login/logout">Logout</a>
     </section>
 </main>
 <footer>

@@ -22,9 +22,9 @@
         <p>This is the Login form.</p>
 
         <%--<form method="post" action="login">--%>
-        <form method="post" action="j_security_check">
+        <form method="post" action="/login/j_security_check">
             <c:if test="${error}">
-                <div style="color:red">Invalid email or password.</div>
+                <div style="color:red">Sign In Failed: Invalid username or password.</div>
             </c:if>
 
             <c:if test="${not empty loginMessage}">

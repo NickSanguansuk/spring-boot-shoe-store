@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@RequestMapping("/time")
+@RequestMapping(value = "/time")
 public class TimeController {
 
     //@RequestMapping(value = {"", "/time"})
@@ -21,9 +21,9 @@ public class TimeController {
     public ModelAndView time(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView result = new ModelAndView();
-        result.setViewName("time/time");
-        return result;
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("time/time");
+        return modelAndView;
     }
 
     //@RequestMapping(value = "/timeSubmit")
@@ -31,8 +31,8 @@ public class TimeController {
     public ModelAndView timeSubmit(HttpServletRequest request, TimeForm form) throws ParseException {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView result = new ModelAndView();
-        result.setViewName("time/time");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("time/time");
 
         System.out.println("---> form.getFullDate(): \t" + form.getFullDate());
         System.out.println("---> form.getStartTime(): \t" + form.getStartTime());
@@ -45,10 +45,10 @@ public class TimeController {
         System.out.println("---> Date dateTimeStart: \t" + dateTimeStart);
         System.out.println("---> Date dateTimeEnd: \t\t" + dateTimeEnd);
 
-        result.addObject("dateTimeStartDisplay", dateTimeStart);
-        result.addObject("dateTimeEndDisplay", dateTimeEnd);
+        modelAndView.addObject("dateTimeStartDisplay", dateTimeStart);
+        modelAndView.addObject("dateTimeEndDisplay", dateTimeEnd);
 
-        return result;
+        return modelAndView;
     }
 
 }

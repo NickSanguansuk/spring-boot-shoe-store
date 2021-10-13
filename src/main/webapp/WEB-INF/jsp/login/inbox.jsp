@@ -27,18 +27,18 @@
     <section>
         <sec:authorize access="hasAuthority('USER')">
             <h2>User has USER authorization.</h2>
-            <a href="../index">---> Go to "index" Page</a>
+            <a href="/index">---> Go to "index" Page</a>
             <br>
         </sec:authorize>
         <sec:authorize access="hasAuthority('ADMIN')">
             <h2>User has ADMIN authorization.</h2>
-            <a href="../admin/protected">---> Go to "admin/protected" Page</a>
+            <a href="/admin/protected">---> Go to "admin/protected" Page</a>
             <br>
         </sec:authorize>
     </section>
     <section>
         <br>
-        <a href="logout">Logout</a>
+        <a href="/login/logout">Logout</a>
     </section>
 </main>
 <footer>

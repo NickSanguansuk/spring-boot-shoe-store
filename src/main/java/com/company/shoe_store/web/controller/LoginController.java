@@ -4,6 +4,7 @@ import com.company.shoe_store.data.entity.User;
 import com.company.shoe_store.data.entity.UserRole;
 import com.company.shoe_store.data.repository.UserRepository;
 import com.company.shoe_store.data.repository.UserRoleRepository;
+import com.company.shoe_store.security.AuthenticatedUserService;
 import com.company.shoe_store.web.form.CreateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping(value = "/login")
 public class LoginController {
 
     //@Autowired
@@ -36,6 +37,9 @@ public class LoginController {
     //@Autowired
     private PasswordEncoder passwordEncoder;
 
+    //@Autowired
+    private AuthenticatedUserService authenticatedUserService;
+
     // Constructors
     // No-argument constructor
     //@Autowired
@@ -45,10 +49,11 @@ public class LoginController {
 
     // Specialized constructor
     @Autowired
-    public LoginController(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
+    public LoginController(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder, AuthenticatedUserService authenticatedUserService) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.authenticatedUserService = authenticatedUserService;
 
         System.out.println("---> In specialized constructor, userRepository instance = " + userRepository);
     }
@@ -74,20 +79,31 @@ public class LoginController {
         return modelAndView;
     }
 
+    @PostMapping(value =  {"", "/login"})
+    public ModelAndView loginPost(HttpServletRequest request) {
+        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
+
+        ModelAndView modelAndView = new ModelAndView("login/login");
+
+        modelAndView.addObject("error", true);
+
+        return modelAndView;
+    }
+
     //@RequestMapping(value = "/create-user", method = RequestMethod.GET)
-    @GetMapping("/create-user")
+    @GetMapping(value = "/create-user")
     public ModelAndView createUserGet(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView result = new ModelAndView("login/create-user");
+        ModelAndView modelAndView = new ModelAndView("login/create-user");
 
-        result.addObject("form", new CreateUserForm());
+        modelAndView.addObject("form", new CreateUserForm());
 
-        return result;
+        return modelAndView;
     }
 
     //@RequestMapping(value = "/create-user", method = RequestMethod.POST)
-    @PostMapping("/create-user")
+    @PostMapping(value = "/create-user")
     //@PreAuthorize("hasAnyAuthority('ADMIN', 'ANOTHER')")
     public ModelAndView createUserPost(HttpServletRequest request, @Valid CreateUserForm form, BindingResult bindingResult, HttpSession session) throws IOException {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
@@ -95,11 +111,11 @@ public class LoginController {
         // Invalidate the old session
         session.invalidate();
 
-        ModelAndView result = new ModelAndView("login/create-user");
-        //ModelAndView result = createUserGet();
+        ModelAndView modelAndView = new ModelAndView("login/create-user");
+        //ModelAndView modelAndView = createUserGet();
 
         // Form validation
-        result.addObject("form", form);
+        modelAndView.addObject("form", form);
 
         System.out.println("---> form: " + form.toString());
 
@@ -111,10 +127,10 @@ public class LoginController {
                 errorMessages.add(error.getDefaultMessage());
             }
 
-            result.addObject("errorFields", bindingResult.getFieldErrors());
-            result.addObject("errorMessages", errorMessages);
+            modelAndView.addObject("errorFields", bindingResult.getFieldErrors());
+            modelAndView.addObject("errorMessages", errorMessages);
 
-            return result;
+            return modelAndView;
         }
 
         // Business logic
@@ -150,38 +166,41 @@ public class LoginController {
 
         // Go to the next page
         //session.setAttribute("userInfo", user);
-        //result.setViewName("redirect:/login/inbox");
-        result.setViewName("redirect:/login/login");
+        //modelAndView.setViewName("redirect:/login/inbox");
+        modelAndView.setViewName("redirect:/login/login");
 
-        return result;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/inbox", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView inboxGetPost(HttpServletRequest request, HttpSession session) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
-        ModelAndView result = new ModelAndView("login/inbox");
+        ModelAndView modelAndView = new ModelAndView("login/inbox");
 
         // Get userObject or userEmail here
         String currentUsername = null;
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         System.out.println("---> authentication: " + authentication);
-        final org.springframework.security.core.userdetails.User principalUser = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
-        System.out.println("---> principalUser: " + principalUser);
+
+        //final org.springframework.security.core.userdetails.User principalUser = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+        //System.out.println("---> principalUser: " + principalUser);
+        //String usernameTesting = authenticatedUserService.getCurrentUsername();
+        //System.out.println("---> usernameTesting: " + usernameTesting);
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             System.out.println("---> User is already logged in.");
             currentUsername = authentication.getName();
             User user = userRepository.findUserByEmail(currentUsername);
             String messageStr = user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")";
-            result.addObject("welcomeUserMessage", messageStr);
+            modelAndView.addObject("welcomeUserMessage", messageStr);
         } else {
             System.out.println("---> User needs to log in first.");
-            result.setViewName("redirect:/login/login");
+            modelAndView.setViewName("redirect:/login/login");
         }
 
-        return result;
+        return modelAndView;
     }
 }
 
