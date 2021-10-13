@@ -22,8 +22,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     public static final Logger LOG = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
-    @Autowired
+    //@Autowired
     private UserRepository userRepository;
+
+    // Constructors
+    // No-argument constructor
+    public UserDetailsServiceImpl() {
+    }
+
+    // Specialized constructor
+    @Autowired
+    public UserDetailsServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -64,15 +75,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     //	}
 
     private Collection<? extends GrantedAuthority> buildGrantAuthorities(List<UserRole> userRoles) {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> authorities = new ArrayList<>();
 
         for (UserRole role : userRoles) {
             //authorities.add(new SimpleGrantedAuthority(role.getRole().toString()));
             authorities.add(new SimpleGrantedAuthority(role.getRole().toString()));
         }
 
-        // always add the user role
-        authorities.add(new SimpleGrantedAuthority("USER"));
+        //// Always add the user role (don't need this line for now)
+        //authorities.add(new SimpleGrantedAuthority("USER"));
 
         return authorities;
     }

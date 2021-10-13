@@ -3,6 +3,7 @@ package com.company.shoe_store.web.controller;
 import com.company.shoe_store.data.entity.User;
 import com.company.shoe_store.data.entity.UserRole;
 import com.company.shoe_store.data.repository.UserRepository;
+import com.company.shoe_store.data.repository.UserRoleRepository;
 import com.company.shoe_store.web.form.CreateUserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -30,18 +31,23 @@ public class LoginController {
     private UserRepository userRepository;
 
     //@Autowired
+    private UserRoleRepository userRoleRepository;
+
+    //@Autowired
     private PasswordEncoder passwordEncoder;
 
     // Constructors
     // No-argument constructor
+    //@Autowired
     public LoginController() {
         System.out.println("---> In no-argument constructor, userRepository instance = " + userRepository); // userRepository is always null, here.
     }
 
     // Specialized constructor
     @Autowired
-    public LoginController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public LoginController(UserRepository userRepository, UserRoleRepository userRoleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.userRoleRepository = userRoleRepository;
         this.passwordEncoder = passwordEncoder;
 
         System.out.println("---> In specialized constructor, userRepository instance = " + userRepository);
@@ -127,9 +133,20 @@ public class LoginController {
 
         System.out.println("---> user: " + user);
 
-        userRepository.save(user); // This line is magic
+        userRepository.save(user); // Commit to database
 
         System.out.println("---> Added new User to the Database.");
+
+        UserRole userRole = new UserRole();
+
+        userRole.setUserObject(user);
+        userRole.setRole(UserRole.Role.USER);
+
+        System.out.println("---> userRole: " + userRole);
+
+        userRoleRepository.save(userRole); // Commit to database
+
+        System.out.println("---> Added new UserRole (\"USER\") to the Database.");
 
         // Go to the next page
         //session.setAttribute("userInfo", user);
@@ -149,6 +166,10 @@ public class LoginController {
         String currentUsername = null;
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("---> authentication: " + authentication);
+        final org.springframework.security.core.userdetails.User principalUser = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+        System.out.println("---> principalUser: " + principalUser);
+
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             System.out.println("---> User is already logged in.");
             currentUsername = authentication.getName();

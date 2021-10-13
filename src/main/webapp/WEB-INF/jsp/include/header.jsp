@@ -18,6 +18,19 @@
     <section>
         <h2>Header Page Topic</h2>
         <p>This is the Header Page.</p>
+        <nav role="navigation" aria-label="Main Menu">
+            <ul class="nav-bar">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <form>
+                <input type="search" name="search-bar" placeholder="Search for your favorite shoes">
+                <input type="submit" name="submit" value="Go!">
+            </form>
+        </nav>
     </section>
 </main>
 <footer>

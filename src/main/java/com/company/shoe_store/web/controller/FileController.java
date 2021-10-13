@@ -64,7 +64,7 @@ public class FileController {
         FileUtils.copyInputStreamToFile(file.getInputStream(), targetFile);
 
         // Use our S3 library to write the file to S3
-        s3.writeFile("wasin-first-bucket/images", file.getOriginalFilename(), targetFile);
+        s3.writeFile("shoe-store-bucket/images", file.getOriginalFilename(), targetFile);
 
         ModelAndView result = new ModelAndView();
         result.setViewName("file/upload");
