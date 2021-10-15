@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles-index.css">
@@ -20,12 +22,26 @@
     <%--<br>--%>
 </header>
 <main>
-    <section class="bg-light text-dark text-center">
+    <section class="bg-light text-dark p-2 text-center">
         <div class="container-fluid px-0">
-            <%--<div>--%>
-            <%--    <h2>Welcome to FeetFirst Shoe Store</h2>--%>
-            <%--</div>--%>
-            <img src="${pageContext.request.contextPath}/resources/images/index/banner.gif" alt="banner">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <%--<div>--%>
+                <%--    <h2>Welcome to FeetFirst Shoe Store</h2>--%>
+                <%--</div>--%>
+                <img class="img-fluid w-100" src="${pageContext.request.contextPath}/resources/images/index/banner.gif"
+                     alt="banner">
+            </div>
+        </div>
+    </section>
+    <section class="bg-light text-dark p-2 text-center">
+        <div class="container-fluid px-0">
+            <div class="d-sm-flex align-items-center justify-content-evenly">
+
+
+
+
+
+            </div>
         </div>
     </section>
 </main>
@@ -34,6 +50,8 @@
     <jsp:include page="include/footer.jsp"/>
 </footer>
 <!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>

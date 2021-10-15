@@ -9,9 +9,18 @@
     /*font-family: Arial, Helvetica, sans-serif;*/
 }
 
-.hidden {
+.my-hidden {
     display: none;
 }
+
+i {
+    vertical-align: middle;
+    font-size: 26px;
+}
+
+/*header main section nav.my-navbar-1 div div ul{*/
+/*    width: 100%;*/
+/*}*/
 
 header main section nav.my-navbar-2 div div ul li a {
     text-transform: uppercase;
