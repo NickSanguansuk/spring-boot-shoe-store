@@ -79,6 +79,12 @@
             </c:otherwise>
         </c:choose>
     </section>
+    <section>
+        <h2>Search for Products</h2>
+        <p>These are the products you looking for.</p>
+
+
+    </section>
 </main>
 <footer>
     <br>

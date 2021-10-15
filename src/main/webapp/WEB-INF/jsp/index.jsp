@@ -43,28 +43,32 @@
             <div class="row text-center g-2 g-md-4">
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/nike.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/nike.jpg"
                              alt="Nike">
                         <span class="my-hidden">Nike</span>
                     </a>
                 </div>
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/jordan.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/jordan.jpg"
                              alt="Jordan">
                         <span class="my-hidden">Jordan</span>
                     </a>
                 </div>
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/adidas.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/adidas.jpg"
                              alt="Adidas">
                         <span class="my-hidden">Adidas</span>
                     </a>
                 </div>
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/puma.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/puma.jpg"
                              alt="Puma">
                         <span class="my-hidden">Puma</span>
                     </a>
@@ -81,7 +85,8 @@
                 </div>
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/crocs.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/crocs.jpg"
                              alt="Crocs">
                         <span class="my-hidden">Crocs</span>
                     </a>
@@ -96,7 +101,8 @@
                 </div>
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/reebok.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/reebok.jpg"
                              alt="Reebok">
                         <span class="my-hidden">Reebok</span>
                     </a>
@@ -121,7 +127,8 @@
                 </div>
                 <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/newera.jpg"
+                        <img class="img-fluid rounded"
+                             src="${pageContext.request.contextPath}/resources/images/logo/newera.jpg"
                              alt="New Era">
                         <span class="my-hidden">New Era</span>
                     </a>
