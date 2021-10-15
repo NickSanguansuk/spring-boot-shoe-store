@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1 my-navbar-1">
             <div class="container-fluid">
                 <a class="navbar-brand pt-0 pb-0" href="/">
-                    <img class="d-inline-block align-middle img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/feetfirst4.jpg"
+                    <img class="d-inline-block align-middle img-fluid rounded-3" src="${pageContext.request.contextPath}/resources/images/logo/feetfirst4.jpg"
                          alt="FeetFirst Logo" width="220" height="40">
                     <span class="my-hidden">FeetFirst</span>
                 </a>

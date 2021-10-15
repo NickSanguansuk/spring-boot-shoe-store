@@ -41,94 +41,94 @@
                 <p>Select Your Favorite Brands</p>
             </div>
             <div class="row text-center g-2 g-md-4">
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/nike.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/nike.jpg"
                              alt="Nike">
                         <span class="my-hidden">Nike</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/jordan.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/jordan.jpg"
                              alt="Jordan">
                         <span class="my-hidden">Jordan</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/adidas.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/adidas.jpg"
                              alt="Adidas">
                         <span class="my-hidden">Adidas</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/puma.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/puma.jpg"
                              alt="Puma">
                         <span class="my-hidden">Puma</span>
                     </a>
                 </div>
             </div>
             <div class="row text-center g-2 g-md-4 pt-4">
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid"
+                        <img class="img-fluid rounded"
                              src="${pageContext.request.contextPath}/resources/images/logo/newbalance.jpg"
                              alt="New Balance">
                         <span class="my-hidden">New Balance</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/crocs.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/crocs.jpg"
                              alt="Crocs">
                         <span class="my-hidden">Crocs</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid"
+                        <img class="img-fluid rounded"
                              src="${pageContext.request.contextPath}/resources/images/logo/converse.jpg"
                              alt="Converse">
                         <span class="my-hidden">Converse</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/reebok.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/reebok.jpg"
                              alt="Reebok">
                         <span class="my-hidden">Reebok</span>
                     </a>
                 </div>
             </div>
             <div class="row text-center g-2 g-md-4 pt-4">
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid"
+                        <img class="img-fluid rounded"
                              src="${pageContext.request.contextPath}/resources/images/logo/thenorthface.jpg"
                              alt="The North Face">
                         <span class="my-hidden">The North Face</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid"
+                        <img class="img-fluid rounded"
                              src="${pageContext.request.contextPath}/resources/images/logo/champion.jpg"
                              alt="Champion">
                         <span class="my-hidden">Champion</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid" src="${pageContext.request.contextPath}/resources/images/logo/newera.jpg"
+                        <img class="img-fluid rounded" src="${pageContext.request.contextPath}/resources/images/logo/newera.jpg"
                              alt="New Era">
                         <span class="my-hidden">New Era</span>
                     </a>
                 </div>
-                <div class="col-md">
+                <div class="col-md px-5 py-2">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid"
+                        <img class="img-fluid rounded"
                              src="${pageContext.request.contextPath}/resources/images/logo/timberland.jpg"
                              alt="Timberland">
                         <span class="my-hidden">Timberland</span>
