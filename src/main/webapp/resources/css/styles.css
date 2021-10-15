@@ -1,15 +1,32 @@
 
 /* This is the General Styles */
 
-header, footer {
-    color: gray;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*color: white;*/
+    /*font-family: Arial, Helvetica, sans-serif;*/
 }
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
 
 /* ########## Testing Section ########## */
 
-h1 {
-    color: darkblue;
-}
+/*header main, footer main {*/
+/*    color: gray;*/
+/*}*/
+
+/*h1 {*/
+/*    color: darkblue;*/
+/*}*/
 
 
 

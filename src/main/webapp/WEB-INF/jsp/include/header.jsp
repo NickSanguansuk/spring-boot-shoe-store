@@ -15,21 +15,76 @@
 
 </header>
 <main>
-    <section>
-        <h2>Header Page Topic</h2>
-        <p>This is the Header Page.</p>
-        <nav role="navigation" aria-label="Main Menu">
-            <ul class="nav-bar">
-                <li><a href="/">Home</a></li>
-                <li><a href="/">Men</a></li>
-                <li><a href="/">Women</a></li>
-                <li><a href="/">Kids</a></li>
-                <li><a href="/">Contact Us</a></li>
-            </ul>
-            <form>
-                <input type="search" name="search-bar" placeholder="Search for your favorite shoes">
-                <input type="submit" name="submit" value="Go!">
-            </form>
+    <section class="my-menu-container">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1">
+            <div class="container-fluid">
+                <a class="navbar-brand pt-0 pb-0" href="/">
+                    <img src="${pageContext.request.contextPath}/resources/images/logo/feetfirst4.jpg"
+                         alt="FeetFirst Logo" width="220" height="40" class="d-inline-block align-middle">
+                    <span class="hidden">FeetFirst</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar-collapse-1"
+                        aria-controls="my-nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="my-navbar-collapse-1">
+                    <ul class="navbar-nav ms-auto text-center">
+                        <form class="d-flex mx-3">
+                            <input class="form-control me-2" type="search" placeholder="Search for your favorite shoes"
+                                   aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        <li class="nav-item dropdown mx-3">
+                            <a class="nav-link dropdown-toggle" id="my-navbar-dropdown" href="/" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="my-navbar-dropdown">
+                                <li><a class="dropdown-item" href="/">Profile</a></li>
+                                <li><a class="dropdown-item" href="/">Sign In</a></li>
+                                <li><a class="dropdown-item" href="/">Register</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/">Sign Out</a></li>
+                            </ul>
+                        </li>
+                        <li class="navbar-item mx-3">
+                            <a class="nav-link" href="/">Cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark pt-1">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar-collapse-2"
+                        aria-controls="my-nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="my-navbar-collapse-2">
+                    <ul class="navbar-nav mx-auto text-center">
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/">Search</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/">Men</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/">Women</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/">Kids</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link" href="/">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </section>
 </main>
