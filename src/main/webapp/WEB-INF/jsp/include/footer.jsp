@@ -15,9 +15,10 @@
 
 </header>
 <main>
-    <section>
-        <h2>Footer Page Topic</h2>
-        <p>This is the Footer Page.</p>
+    <section class="bg-dark text-light text-center">
+        <div class="container-fluid px-0">
+            <h2 class="m-0">Footer</h2>
+        </div>
     </section>
 </main>
 <footer>

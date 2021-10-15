@@ -15,7 +15,7 @@
 
 </header>
 <main>
-    <section class="my-menu-container">
+    <section>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1 my-navbar-1">
             <div class="container-fluid">
                 <a class="navbar-brand pt-0 pb-0" href="/">
@@ -49,7 +49,7 @@
                                 <li><a class="dropdown-item" href="/">Sign Out</a></li>
                             </ul>
                         </li>
-                        <li class="navbar-item mx-3 text-center">
+                        <li class="navbar-item ms-2 me-3 text-center">
                             <a class="nav-link pt-0 pb-0" href="/">
                                 <i class="bi bi-cart3"></i>
                             </a>
