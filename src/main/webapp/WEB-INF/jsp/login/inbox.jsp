@@ -16,8 +16,8 @@
 <body>
 <header>
     <jsp:include page="../include/header.jsp"/>
-    <h1>Login / Inbox Page</h1>
-    <br>
+    <%--<h1>Login / Inbox Page</h1>--%>
+    <%--<br>--%>
 </header>
 <main>
     <section>

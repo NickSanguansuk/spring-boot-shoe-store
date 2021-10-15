@@ -15,8 +15,8 @@
 <body>
 <header>
     <jsp:include page="../include/header.jsp"/>
-    <h1>Search / Detail Page</h1>
-    <br>
+    <%--<h1>Search / Detail Page</h1>--%>
+    <%--<br>--%>
 </header>
 <main>
     <section>

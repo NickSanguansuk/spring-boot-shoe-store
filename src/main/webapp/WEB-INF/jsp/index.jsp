@@ -16,13 +16,17 @@
 <body>
 <header>
     <jsp:include page="include/header.jsp"/>
-    <h1>Home Page</h1>
-    <br>
+    <%--<h1>Home Page</h1>--%>
+    <%--<br>--%>
 </header>
 <main>
-    <section>
-        <h2>Home Page topic</h2>
-        <p>This is the Home Page context.</p>
+    <section class="bg-light text-dark text-center">
+        <div class="container-fluid px-0">
+            <%--<div>--%>
+            <%--    <h2>Welcome to FeetFirst Shoe Store</h2>--%>
+            <%--</div>--%>
+            <img src="${pageContext.request.contextPath}/resources/images/index/banner.gif" alt="banner">
+        </div>
     </section>
 </main>
 <footer>
