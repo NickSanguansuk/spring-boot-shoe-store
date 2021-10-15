@@ -16,7 +16,7 @@
 </header>
 <main>
     <section class="my-menu-container">
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1 my-navbar-1">
             <div class="container-fluid">
                 <a class="navbar-brand pt-0 pb-0" href="/">
                     <img src="${pageContext.request.contextPath}/resources/images/logo/feetfirst4.jpg"
@@ -37,7 +37,7 @@
                         <li class="nav-item dropdown mx-3">
                             <a class="nav-link dropdown-toggle" id="my-navbar-dropdown" href="/" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
+                                Sign In / Register
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="my-navbar-dropdown">
                                 <li><a class="dropdown-item" href="/">Profile</a></li>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark pt-1">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark pt-1 my-navbar-2">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar-collapse-2"
                         aria-controls="my-nav-menu" aria-expanded="false" aria-label="Toggle navigation">
