@@ -9,6 +9,12 @@
     /*font-family: Arial, Helvetica, sans-serif;*/
 }
 
+body::before {
+    display: block;
+    content: '';
+    height: 112px;
+}
+
 .my-hidden {
     display: none;
 }
@@ -26,6 +32,16 @@ header main section nav.my-navbar-2 div div ul li a {
     text-transform: uppercase;
 }
 
+#my-shop-by-brand h2 {
+    font-size: x-large;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#my-shop-by-brand p {
+    font-weight: bold;
+    color: gray;
+}
 
 
 

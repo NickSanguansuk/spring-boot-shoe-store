@@ -15,7 +15,7 @@
 
 </header>
 <main>
-    <section>
+    <section class="fixed-top">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1 my-navbar-1">
             <div class="container-fluid">
                 <a class="navbar-brand pt-0 pb-0" href="/">

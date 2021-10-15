@@ -36,8 +36,8 @@
 
     <section class="bg-light text-dark p-2 text-center">
         <div class="container-fluid px-0">
-            <div id="my-popular-brands">
-                <h2>Popular Brands</h2>
+            <div id="my-shop-by-brand">
+                <h2>Shop By Brand</h2>
                 <p>Select Your Favorite Brands</p>
             </div>
             <div class="row text-center g-2 g-md-4">
