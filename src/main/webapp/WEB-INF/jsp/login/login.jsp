@@ -28,7 +28,7 @@
         <%--<form method="post" action="login">--%>
         <form method="post" action="/login/j_security_check">
             <c:if test="${error}">
-                <div style="color:red">Sign In Failed: Invalid username or password.</div>
+                <div style="color:red">Sign in FAILED: Invalid username or password.</div>
             </c:if>
 
             <c:if test="${not empty loginMessage}">

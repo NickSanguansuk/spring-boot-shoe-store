@@ -67,7 +67,7 @@ public class LoginController {
         System.out.println("---> " + userRoles);
     }
 
-    //@RequestMapping(value = "login", method = RequestMethod.GET)
+    //@RequestMapping(value = "/login", method = RequestMethod.GET)
     @GetMapping(value =  {"", "/login"})
     public ModelAndView loginGet(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
@@ -197,8 +197,22 @@ public class LoginController {
             modelAndView.addObject("welcomeUserMessage", messageStr);
         } else {
             System.out.println("---> User needs to log in first.");
-            modelAndView.setViewName("redirect:/login/login");
+            modelAndView = new ModelAndView("login/login");
+            modelAndView.addObject("loginMessage", "Please sign in to enter Profile page.");
+            //modelAndView.setViewName("redirect:/login/login");
         }
+
+        return modelAndView;
+    }
+
+    //@RequestMapping(value = "/logout-success")
+    @GetMapping(value = "/logout-success")
+    public ModelAndView logoutGet(HttpServletRequest request) {
+        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
+
+        ModelAndView modelAndView = new ModelAndView("login/login");
+
+        modelAndView.addObject("loginMessage", "Successfully signed out.");
 
         return modelAndView;
     }

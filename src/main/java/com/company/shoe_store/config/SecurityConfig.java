@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .logoutUrl("/login/logout")
                     //.logoutSuccessUrl("/index")
-                    .logoutSuccessUrl("/login/login")
+                    .logoutSuccessUrl("/login/logout-success")
                     .and()
                 .rememberMe()
                     .key("SR_KEY")

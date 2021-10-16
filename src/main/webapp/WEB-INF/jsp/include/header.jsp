@@ -42,17 +42,17 @@
                                 Sign In / Register
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="my-navbar-dropdown">
-                                <li><a class="dropdown-item" href="/">Profile</a></li>
-                                <li><a class="dropdown-item" href="/">Sign In</a></li>
-                                <li><a class="dropdown-item" href="/">Register</a></li>
+                                <li><a class="dropdown-item" href="/login/inbox">Profile</a></li>
+                                <li><a class="dropdown-item" href="/login">Sign In</a></li>
+                                <li><a class="dropdown-item" href="/login/create-user">Register</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/">Sign Out</a></li>
+                                <li><a class="dropdown-item" href="/login/logout">Sign Out</a></li>
                             </ul>
                         </li>
                         <li class="navbar-item ms-2 me-3 text-center">
-                            <a class="nav-link pt-0 pb-0" href="/">
+                            <a class="nav-link pt-0 pb-0" href="/cart">
                                 <i class="bi bi-cart3"></i>
                             </a>
                         </li>
@@ -70,22 +70,22 @@
                 <div class="collapse navbar-collapse" id="my-navbar-collapse-2">
                     <ul class="navbar-nav mx-auto text-center">
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/index">Home</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/">Search</a>
+                            <a class="nav-link" href="/search">Search</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/">Men</a>
+                            <a class="nav-link" href="/nav/men">Men</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/">Women</a>
+                            <a class="nav-link" href="/nav/women">Women</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/">Kids</a>
+                            <a class="nav-link" href="/nav/kids">Kids</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/">Contact Us</a>
+                            <a class="nav-link" href="/nav/contact">Contact Us</a>
                         </li>
                     </ul>
                 </div>
