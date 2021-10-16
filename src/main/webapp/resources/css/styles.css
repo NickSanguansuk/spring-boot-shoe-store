@@ -43,11 +43,20 @@ header main section nav.my-navbar-2 div div ul li a {
     margin: auto;
 }
 
-.my-section-header h2 {
+.my-section-header h2.my-white-header {
     font-size: large;
     font-weight: 700;
     text-transform: uppercase;
-    color: gray;
+    /*color: gray;*/
+    color: white;
+}
+
+.my-section-header h2.my-black-header {
+    font-size: large;
+    font-weight: 700;
+    text-transform: uppercase;
+    /*color: gray;*/
+    color: black;
 }
 
 .my-section-header p {

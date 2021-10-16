@@ -37,7 +37,7 @@
     <section class="bg-dark text-light p-2 text-center my-section-container">
         <div class="container-fluid px-0">
             <div class="my-section-header">
-                <h2>Trending</h2>
+                <h2 class="my-white-header mt-2">Trending</h2>
                 <p>Most Wanted Styles</p>
             </div>
             <div class="row g-2">
@@ -78,7 +78,7 @@
     <section class="bg-light text-dark p-2 text-center my-section-container my-brands-section">
         <div class="container-fluid px-0">
             <div class="my-section-header">
-                <h2>Shop By Brand</h2>
+                <h2 class="my-black-header mt-2">Shop By Brand</h2>
                 <p>Select Your Favorite Brands</p>
             </div>
             <div class="row text-center g-2 g-md-4">
