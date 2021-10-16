@@ -9,6 +9,11 @@
     /*font-family: Arial, Helvetica, sans-serif;*/
 }
 
+body {
+    background-color: #E6E6E6;
+}
+
+/* For the space under navbar */
 body::before {
     display: block;
     content: '';
@@ -32,17 +37,33 @@ header main section nav.my-navbar-2 div div ul li a {
     text-transform: uppercase;
 }
 
-#my-shop-by-brand h2 {
-    font-size: x-large;
-    font-weight: 700;
-    text-transform: uppercase;
+.my-section-container {
+    /*max-width: 1244px;*/
+    max-width: 1600px;
+    margin: auto;
 }
 
-#my-shop-by-brand p {
-    font-weight: bold;
+.my-section-header h2 {
+    font-size: large;
+    font-weight: 700;
+    text-transform: uppercase;
     color: gray;
 }
 
+.my-section-header p {
+    /*font-weight: bold;*/
+    color: gray;
+}
+
+.my-img-title {
+    text-transform: uppercase;
+    font-size: medium;
+}
+
+.my-brands {
+    /*max-width: 170px;*/
+    /*padding: 16px 60px;*/
+}
 
 
 
