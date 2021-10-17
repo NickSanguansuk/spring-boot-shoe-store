@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/resources/css/styles-search-detail.css">
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
 <body>
@@ -76,7 +78,7 @@
     </section>
 </main>
 <footer>
-    <br>
+    <%--<br>--%>
     <jsp:include page="../include/footer.jsp"/>
 </footer>
 <!-- Bootstrap JavaScript -->

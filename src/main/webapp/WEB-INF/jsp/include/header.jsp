@@ -18,7 +18,7 @@
     <section class="fixed-top">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark pb-1 my-navbar-1">
             <div class="container-fluid">
-                <a class="navbar-brand pt-0 pb-0" href="/">
+                <a class="navbar-brand pt-0 pb-0" href="/index">
                     <img class="d-inline-block align-middle img-fluid rounded-3"
                          src="${pageContext.request.contextPath}/resources/images/logo/feetfirst4.jpg"
                          alt="FeetFirst Logo" width="220" height="40">
@@ -37,13 +37,13 @@
                     </form>
                     <ul class="navbar-nav ms-auto text-center">
                         <li class="nav-item dropdown mx-3">
-                            <a class="nav-link dropdown-toggle" id="my-navbar-dropdown" href="/" role="button"
+                            <a class="nav-link dropdown-toggle" id="my-navbar-dropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Sign In / Register
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="my-navbar-dropdown">
                                 <li><a class="dropdown-item" href="/login/inbox">Profile</a></li>
-                                <li><a class="dropdown-item" href="/login">Sign In</a></li>
+                                <li><a class="dropdown-item" href="/login/login">Sign In</a></li>
                                 <li><a class="dropdown-item" href="/login/create-user">Register</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -52,7 +52,7 @@
                             </ul>
                         </li>
                         <li class="navbar-item ms-2 me-3 text-center">
-                            <a class="nav-link pt-0 pb-0" href="/cart">
+                            <a class="nav-link pt-0 pb-0" href="/cart/cart">
                                 <i class="bi bi-cart3"></i>
                             </a>
                         </li>
@@ -73,7 +73,7 @@
                             <a class="nav-link" href="/index">Home</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/search">Search</a>
+                            <a class="nav-link" href="/search/search">Search</a>
                         </li>
                         <li class="navbar-item px-3">
                             <a class="nav-link" href="/nav/men">Men</a>

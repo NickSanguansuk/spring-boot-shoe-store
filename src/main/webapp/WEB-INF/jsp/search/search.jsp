@@ -87,7 +87,7 @@
     </section>
 </main>
 <footer>
-    <br>
+    <%--<br>--%>
     <jsp:include page="../include/footer.jsp"/>
 </footer>
 <!-- Bootstrap JavaScript -->
