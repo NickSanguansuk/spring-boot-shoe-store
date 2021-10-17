@@ -25,6 +25,13 @@
 </header>
 <main>
     <section>
+        <h2>Search for Products</h2>
+        <p>These are the products you looking for.</p>
+        <br>
+        <br>
+        <br>
+    </section>
+    <section>
         <h2>Search bar</h2>
         <p>This is the Search bar.</p>
 
@@ -79,12 +86,6 @@
                 </table>
             </c:otherwise>
         </c:choose>
-    </section>
-    <section>
-        <h2>Search for Products</h2>
-        <p>These are the products you looking for.</p>
-
-
     </section>
 </main>
 <footer>
