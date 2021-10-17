@@ -21,12 +21,8 @@ public class Product {
     private Integer id;
 
     @Basic
-    @Column(name = "item_id", nullable = false)
-    private Integer itemId;
-
-    @Basic
-    @Column(name = "color", nullable = false)
-    private String color;
+    @Column(name = "subproduct_id", nullable = false)
+    private Integer subproductId;
 
     @Basic
     @Column(name = "size", nullable = false, columnDefinition = "DECIMAL", precision = 3, scale = 1)
@@ -117,8 +113,7 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", itemId=" + itemId +
-                ", color='" + color + '\'' +
+                ", subproductId=" + subproductId +
                 ", size=" + size +
                 ", price=" + price +
                 ", availability=" + availability +

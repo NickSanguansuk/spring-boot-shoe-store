@@ -28,12 +28,12 @@ public class Item {
     private Integer id;
 
     @Basic
-    @Column(name = "brand", nullable = false)
-    private String brand;
-
-    @Basic
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Basic
+    @Column(name = "brand", nullable = false)
+    private String brand;
 
     @Basic
     @Column(name = "gender", nullable = false)
@@ -135,8 +135,8 @@ public class Item {
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", brand='" + brand + '\'' +
                 ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
                 ", gender=" + gender +
                 ", category=" + category +
                 ", starRating=" + starRating +
