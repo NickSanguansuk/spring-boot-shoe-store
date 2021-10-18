@@ -33,8 +33,38 @@ i {
 /*    width: 100%;*/
 /*}*/
 
+/* Header */
+
 header main section nav.my-navbar-2 div div ul li a {
     text-transform: uppercase;
+}
+
+/* Footer */
+
+footer .my-footer-feetfirst {
+    /*text-transform: uppercase;*/
+}
+
+footer ul.my-footer-social {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.8rem 0 0.8rem 0;
+    padding: 0;
+}
+
+footer ul.my-footer-social li {
+    margin: 0 15px;
+}
+
+footer a {
+    color: gray;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
 }
 
 /* For ---> styles-index.css */
