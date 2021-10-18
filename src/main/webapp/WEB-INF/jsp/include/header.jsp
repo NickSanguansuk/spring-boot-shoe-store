@@ -70,22 +70,22 @@
                 <div class="collapse navbar-collapse" id="my-navbar-collapse-2">
                     <ul class="navbar-nav mx-auto text-center">
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/index">Home</a>
+                            <a class="nav-link my-nav-home" href="/index">Home</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/search/search">Search</a>
+                            <a class="nav-link my-nav-search" href="/search/search">Search</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/nav/men">Men</a>
+                            <a class="nav-link my-nav-men" href="/nav/men">Men</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/nav/women">Women</a>
+                            <a class="nav-link my-nav-women" href="/nav/women">Women</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/nav/kids">Kids</a>
+                            <a class="nav-link my-nav-kids" href="/nav/kids">Kids</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link" href="/nav/contact">Contact Us</a>
+                            <a class="nav-link my-nav-contact" href="/nav/contact">Contact Us</a>
                         </li>
                     </ul>
                 </div>

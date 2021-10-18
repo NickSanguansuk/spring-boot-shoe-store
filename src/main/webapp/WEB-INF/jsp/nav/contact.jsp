@@ -25,30 +25,34 @@
     <jsp:include page="../include/header.jsp"/>
 </header>
 <main>
-    <section class="bg-light text-dark p-2 text-center my-section-container">
+    <section class="bg-light text-dark p-4 text-center my-section-container">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md">
-                    <h2 class="text-center mb-4">Contact Info</h2>
-                    <ul class="list-group list-group-flush lead">
-                        <li class="list-group-item">
-                            <span class="fw-bold">Main Location:</span> 50 Main st Boston MA
-                        </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Enrollment Phone:</span> (555) 555-5555
-                        </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Student Phone:</span> (333) 333-3333
-                        </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Enrollment Email:</span> (555)
-                            enroll@frontendbc.test
-                        </li>
-                        <li class="list-group-item">
-                            <span class="fw-bold">Student Email:</span>
-                            student@frontendbc.test
-                        </li>
-                    </ul>
+                <div class="col-md-4">
+                    <h2 class="text-center fs-3 m-4">Contact Us</h2>
+                    <div class="my-contact-contactInfo">
+                        <div class="my-contact-box">
+                            <div class="my-contact-icon"><i class="fa fa-map" aria-hidden="true"></i></div>
+                            <div class="my-contact-text m-4 mt-3 align-items-start">
+                                <h3 class="fs-5">Address</h3>
+                                <p>1242 N Milwaukee Ave, <br>Chicago, IL 60640</p>
+                            </div>
+                        </div>
+                        <div class="my-contact-box">
+                            <div class="my-contact-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                            <div class="my-contact-text m-4 mt-3 align-items-start">
+                                <h3 class="fs-5">Phone</h3>
+                                <p>(773) 969-2788</p>
+                            </div>
+                        </div>
+                        <div class="my-contact-box">
+                            <div class="my-contact-icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                            <div class="my-contact-text m-4 mt-3 align-items-start">
+                                <h3 class="fs-5">Email</h3>
+                                <p>Info@FeetFirstShoeStore.com</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md">
                     <%--<div id='map' style='width: 400px; height: 300px;'></div>--%>

@@ -121,6 +121,53 @@ table.my-search-result-table th, table.my-search-result-table td {
 
 /* For ---> styles-nav-contact.css */
 
+.my-contact-contactInfo {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-contact-contactInfo .my-contact-box {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+
+.my-contact-contactInfo .my-contact-box .my-contact-icon {
+    min-width: 60px;
+    height: 60px;
+    background: #B0B0B0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.my-contact-contactInfo .my-contact-box .my-contact-text {
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: black;
+    flex-direction: column;
+    font-weight: 300;
+    /*width: 500px;*/
+}
+
+.my-contact-contactInfo .my-contact-box .my-contact-text h3 {
+    font-size: 1.4em;
+    /*font-weight: 500;*/
+    font-weight: bold;
+    /*color: #00bcd4;*/
+    padding-bottom: 0;
+}
+
+.my-contact-contactInfo .my-contact-box .my-contact-text p {
+    margin-top: 0;
+    width: 300px;
+    text-align: start;
+}
+
 #map {
     width: 100%;
     height: 100%;
