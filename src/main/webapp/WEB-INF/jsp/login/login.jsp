@@ -25,36 +25,66 @@
     <%--<br>--%>
 </header>
 <main>
-    <section>
-        <h2>Login form</h2>
-        <p>This is the Login form.</p>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container">
+            <form method="post" action="/login/j_security_check" style="max-width: 360px; margin: auto;">
+                <img class="rounded m-4"
+                     src="${pageContext.request.contextPath}/resources/images/logo/feetfirst8.jpg"
+                     alt="FeetFirst Logo" width="300" height="auto">
+                <h1 class="h3, mb-3">Please sign in</h1>
 
-        <%--<form method="post" action="login">--%>
-        <form method="post" action="/login/j_security_check">
-            <c:if test="${error}">
-                <div style="color:red">Sign in FAILED: Invalid username or password.</div>
-            </c:if>
+                <c:if test="${error}">
+                    <div style="color:red">Sign in FAILED: Invalid username or password.</div>
+                </c:if>
 
-            <c:if test="${not empty loginMessage}">
-                <span style='color:red'>${loginMessage}</span>
-                <br>
-            </c:if>
-            <hr>
+                <div class="">
+                    <c:if test="${not empty loginMessage}">
+                        <span style='color:red'>${loginMessage}</span>
+                        <br>
+                    </c:if>
+                </div>
+                <hr>
 
-            <label>
-                Username:
-                <input type="text" name="username" value="" required>
-            </label>
-            <br>
+                <div class="text-start">
+                    <label class="sr-only form-label" for="my-login-form-username">Username (Email address)</label>
+                    <%--<input class="form-control" type="email" id="my-login-form-username" name="username" value=""--%>
+                    <%--       placeholder="example@domain.com" required autofocus>--%>
+                    <input class="form-control" type="email" id="my-login-form-username" name="username" value=""
+                           placeholder="Username" required>
+                </div>
 
-            <label>
-                Password:
-                <input type="password" name="password" value="" required>
-            </label>
-            <br>
+                <div class="text-start">
+                    <label class="sr-only form-label" for="my-login-form-password">Password</label>
+                    <input class="form-control" type="password" id="my-login-form-password" name="password" value=""
+                           placeholder="Password" required>
+                </div>
 
-            <input type="submit" name="login" value="Login">
-        </form>
+                <div class="checkbox mt-3 mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me">
+                        Remember me
+                    </label>
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
+                </div>
+
+                <%--<label>--%>
+                <%--    Username:--%>
+                <%--    <input type="text" name="username" value="" required>--%>
+                <%--</label>--%>
+                <%--<br>--%>
+
+                <%--<label>--%>
+                <%--    Password:--%>
+                <%--    <input type="password" name="password" value="" required>--%>
+                <%--</label>--%>
+                <%--<br>--%>
+
+                <%--<input type="submit" name="login" value="Login">--%>
+            </form>
+        </div>
     </section>
 </main>
 <footer>

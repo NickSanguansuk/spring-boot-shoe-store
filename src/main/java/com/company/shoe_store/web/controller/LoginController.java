@@ -195,6 +195,8 @@ public class LoginController {
             User user = userRepository.findUserByEmail(currentUsername);
             String messageStr = user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")";
             modelAndView.addObject("welcomeUserMessage", messageStr);
+            //modelAndView.addObject("userFirstNameDisplay", user.getFirstName());
+            session.setAttribute("userFirstNameDisplay", user.getFirstName());
         } else {
             System.out.println("---> User needs to log in first.");
             modelAndView = new ModelAndView("login/login");

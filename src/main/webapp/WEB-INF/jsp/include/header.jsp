@@ -39,7 +39,12 @@
                         <li class="nav-item dropdown mx-3">
                             <a class="nav-link dropdown-toggle" id="my-navbar-dropdown" href="#" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Sign In / Register
+                                <c:if test="${empty userFirstNameDisplay}">
+                                    <span>Sign In / Register</span>
+                                </c:if>
+                                <c:if test="${not empty userFirstNameDisplay}">
+                                    <span>Hi, ${userFirstNameDisplay}</span>
+                                </c:if>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="my-navbar-dropdown">
                                 <li><a class="dropdown-item" href="/login/inbox">Profile</a></li>
