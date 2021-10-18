@@ -36,22 +36,30 @@
                 <c:when test="${empty searchText}">
                     <p class="fs-4">No search parameter.</p>
                 </c:when>
-                <c:when test="${not empty searchText and empty users}">
+                <c:when test="${not empty searchText and empty subproducts}">
                     <p class="fs-4">No results found.</p>
                 </c:when>
                 <c:otherwise>
                     <div class="row g-4">
-                        <c:forEach items="${users}" var="user">
+                        <c:forEach items="${subproducts}" var="subproduct">
                             <div class="col-6 col-md-4 col-xl-3">
-                                <div class="card bg-secondary text-light">
-                                    <div class="card-body text-center">
-                                        <img class="rounded mb-3"
-                                             src="${pageContext.request.contextPath}/resources/images/subproducts/${subproduct.id}/${subproduct.image1}"
-                                             alt="">
-                                        <h3 class="card-title mb-3">${subproduct.name}</h3>
-                                        <p class="card-text">$${subproduct.price} (${subproduct.rating})</p>
+                                <a class="text-decoration-none" href="/search/detail?id=${subproduct.id}">
+                                    <div class="card bg-secondary text-light">
+                                        <div class="card-body text-center p-1">
+                                            <img class="img-fluid rounded mb-2"
+                                                 src="${pageContext.request.contextPath}/resources/images/subproducts/${subproduct.id}/${subproduct.image1}"
+                                                 alt="">
+                                            <div class="text-start px-2">
+                                                <h3 class="fs-6 card-title mb-2">${subproduct.itemObject.name}</h3>
+                                                <div class="d-flex justify-content-between mb-0">
+                                                    <p class="card-text m-0">$${subproduct.products[1].price}</p>
+                                                    <p class="card-text m-0">[ ${subproduct.itemObject.starRating} ]</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                    <span class="my-hidden">Searched Result</span>
+                                </a>
                             </div>
                         </c:forEach>
                     </div>
@@ -59,62 +67,63 @@
             </c:choose>
         </div>
     </section>
-    <section>
-        <h2>Search bar</h2>
-        <p>This is the Search bar.</p>
 
-        <form>
-            <label>
-                Search (for email):
-                <input type="text" name="searchText" value="${searchText}">
-                <input type="submit" name="submit" value="Submit">
-            </label>
-        </form>
-        <br>
-        <c:choose>
-            <c:when test="${empty searchText}">
-                <h3>No search parameter.</h3>
-            </c:when>
-            <c:when test="${not empty searchText and empty users}">
-                <h3>No results found.</h3>
-            </c:when>
-            <c:otherwise>
-                <%--<table border="1" cellpadding="3">--%>
-                <table class="my-search-result-table">
-                    <tr>
-                        <th><b>ID</b></th>
-                        <th><b>First Name</b></th>
-                        <th><b>Last Name</b></th>
-                        <th><b>Email</b></th>
-                        <th><b>Password</b></th>
-                        <th><b>Phone</b></th>
-                        <th><b>Address</b></th>
-                        <th><b>City</b></th>
-                        <th><b>State</b></th>
-                        <th><b>Zip Code</b></th>
-                        <th><b>Roles</b></th>
-                    </tr>
+    <%--<section>--%>
+    <%--    <h2>Search bar</h2>--%>
+    <%--    <p>This is the Search bar.</p>--%>
 
-                    <c:forEach items="${users}" var="user">
-                        <tr>
-                            <td>${user.id}</td>
-                            <td>${user.firstName}</td>
-                            <td>${user.lastName}</td>
-                            <td>${user.email}</td>
-                            <td>${user.password}</td>
-                            <td>${user.phone}</td>
-                            <td>${user.address}</td>
-                            <td>${user.city}</td>
-                            <td>${user.state}</td>
-                            <td>${user.zipCode}</td>
-                            <td>${user.userRoles}</td>
-                            <td><a href="/search/detail?id=${user.id}">Details</a></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </c:otherwise>
-        </c:choose>
-    </section>
+    <%--    <form>--%>
+    <%--        <label>--%>
+    <%--            Search (for email):--%>
+    <%--            <input type="text" name="searchText" value="${searchText}">--%>
+    <%--            <input type="submit" name="submit" value="Submit">--%>
+    <%--        </label>--%>
+    <%--    </form>--%>
+    <%--    <br>--%>
+    <%--    <c:choose>--%>
+    <%--        <c:when test="${empty searchText}">--%>
+    <%--            <h3>No search parameter.</h3>--%>
+    <%--        </c:when>--%>
+    <%--        <c:when test="${not empty searchText and empty users}">--%>
+    <%--            <h3>No results found.</h3>--%>
+    <%--        </c:when>--%>
+    <%--        <c:otherwise>--%>
+    <%--            &lt;%&ndash;<table border="1" cellpadding="3">&ndash;%&gt;--%>
+    <%--            <table class="my-search-result-table">--%>
+    <%--                <tr>--%>
+    <%--                    <th><b>ID</b></th>--%>
+    <%--                    <th><b>First Name</b></th>--%>
+    <%--                    <th><b>Last Name</b></th>--%>
+    <%--                    <th><b>Email</b></th>--%>
+    <%--                    <th><b>Password</b></th>--%>
+    <%--                    <th><b>Phone</b></th>--%>
+    <%--                    <th><b>Address</b></th>--%>
+    <%--                    <th><b>City</b></th>--%>
+    <%--                    <th><b>State</b></th>--%>
+    <%--                    <th><b>Zip Code</b></th>--%>
+    <%--                    <th><b>Roles</b></th>--%>
+    <%--                </tr>--%>
+
+    <%--                <c:forEach items="${users}" var="user">--%>
+    <%--                    <tr>--%>
+    <%--                        <td>${user.id}</td>--%>
+    <%--                        <td>${user.firstName}</td>--%>
+    <%--                        <td>${user.lastName}</td>--%>
+    <%--                        <td>${user.email}</td>--%>
+    <%--                        <td>${user.password}</td>--%>
+    <%--                        <td>${user.phone}</td>--%>
+    <%--                        <td>${user.address}</td>--%>
+    <%--                        <td>${user.city}</td>--%>
+    <%--                        <td>${user.state}</td>--%>
+    <%--                        <td>${user.zipCode}</td>--%>
+    <%--                        <td>${user.userRoles}</td>--%>
+    <%--                        <td><a href="/search/detail?id=${user.id}">Details</a></td>--%>
+    <%--                    </tr>--%>
+    <%--                </c:forEach>--%>
+    <%--            </table>--%>
+    <%--        </c:otherwise>--%>
+    <%--    </c:choose>--%>
+    <%--</section>--%>
 </main>
 <footer>
     <%--<br>--%>

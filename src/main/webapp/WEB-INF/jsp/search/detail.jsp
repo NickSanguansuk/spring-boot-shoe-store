@@ -26,58 +26,61 @@
 </header>
 <main>
     <section>
-        <h1>Search Detail Page</h1>
-        <p>This page is displaying search details.</p>
 
-        <h3>Details of: ${user.email}</h3>
-        <table>
-            <tr>
-                <td>ID</td>
-                <td>${user.id}</td>
-            </tr>
-            <tr>
-                <td>First Name</td>
-                <td>${user.firstName}</td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>${user.lastName}</td>
-            </tr>
-            <tr>
-                <td>email</td>
-                <td>${user.email}</td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>${user.password}</td>
-            </tr>
-            <tr>
-                <td>Phone</td>
-                <td>${user.phone}</td>
-            </tr>
-            <tr>
-                <td>Address</td>
-                <td>${user.address}</td>
-            </tr>
-
-            <tr>
-                <td>City</td>
-                <td>${user.city}</td>
-            </tr>
-            <tr>
-                <td>State</td>
-                <td>${user.state}</td>
-            </tr>
-            <tr>
-                <td>Zip Code</td>
-                <td>${user.zipCode}</td>
-            </tr>
-            <tr>
-                <td>Roles</td>
-                <td>${user.userRoles}</td>
-            </tr>
-        </table>
     </section>
+    <%--<section>--%>
+    <%--    <h1>Search Detail Page</h1>--%>
+    <%--    <p>This page is displaying search details.</p>--%>
+
+    <%--    <h3>Details of: ${user.email}</h3>--%>
+    <%--    <table>--%>
+    <%--        <tr>--%>
+    <%--            <td>ID</td>--%>
+    <%--            <td>${user.id}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>First Name</td>--%>
+    <%--            <td>${user.firstName}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>Last Name</td>--%>
+    <%--            <td>${user.lastName}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>email</td>--%>
+    <%--            <td>${user.email}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>Password</td>--%>
+    <%--            <td>${user.password}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>Phone</td>--%>
+    <%--            <td>${user.phone}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>Address</td>--%>
+    <%--            <td>${user.address}</td>--%>
+    <%--        </tr>--%>
+
+    <%--        <tr>--%>
+    <%--            <td>City</td>--%>
+    <%--            <td>${user.city}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>State</td>--%>
+    <%--            <td>${user.state}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>Zip Code</td>--%>
+    <%--            <td>${user.zipCode}</td>--%>
+    <%--        </tr>--%>
+    <%--        <tr>--%>
+    <%--            <td>Roles</td>--%>
+    <%--            <td>${user.userRoles}</td>--%>
+    <%--        </tr>--%>
+    <%--    </table>--%>
+    <%--</section>--%>
 </main>
 <footer>
     <%--<br>--%>
