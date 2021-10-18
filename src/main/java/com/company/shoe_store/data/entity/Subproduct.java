@@ -1,9 +1,13 @@
 package com.company.shoe_store.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,9 +20,14 @@ public class Subproduct {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Basic
-    @Column(name = "item_id", nullable = false)
-    private Integer itemId;
+    //@Basic
+    //@Column(name = "item_id", nullable = false)
+    //private Integer itemId;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id", nullable = false)
+    private Item itemObject;
 
     @Basic
     @Column(name = "color", nullable = false)
@@ -48,6 +57,10 @@ public class Subproduct {
     @Column(name = "image_6")
     private String image6;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "subproductObject", fetch = FetchType.LAZY)
+    private List<Product> products = new ArrayList<>();
+
     // Constructors
     public Subproduct() {
     }
@@ -56,7 +69,8 @@ public class Subproduct {
     public String toString() {
         return "Subproduct{" +
                 "id=" + id +
-                ", itemId=" + itemId +
+                //", itemObject=" + itemObject +
+                ", itemId=" + itemObject.getId() +
                 ", color='" + color + '\'' +
                 ", image1='" + image1 + '\'' +
                 ", image2='" + image2 + '\'' +
@@ -64,6 +78,7 @@ public class Subproduct {
                 ", image4='" + image4 + '\'' +
                 ", image5='" + image5 + '\'' +
                 ", image6='" + image6 + '\'' +
+                ", products=" + products +
                 '}';
     }
 

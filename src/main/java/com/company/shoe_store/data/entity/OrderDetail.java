@@ -39,6 +39,10 @@ public class OrderDetail {
     @Column(name = "quantity_ordered", nullable = false)
     private Integer quantityOrdered;
 
+    @Basic
+    @Column(name = "already_reviewed", nullable = false)
+    private Boolean alreadyReviewed;
+
     // Constructors
     public OrderDetail() {
     }
@@ -125,6 +129,7 @@ public class OrderDetail {
                 //", productObject=" + productObject +
                 ", productId=" + productObject.getId() +
                 ", quantityOrdered=" + quantityOrdered +
+                ", alreadyReviewed=" + alreadyReviewed +
                 '}';
     }
 

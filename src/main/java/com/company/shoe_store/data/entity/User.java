@@ -211,4 +211,5 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, email, password, phone, address, city, state, zipCode, userRoles);
     }
+
 }

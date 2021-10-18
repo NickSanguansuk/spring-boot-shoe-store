@@ -25,12 +25,39 @@
     <%--<br>--%>
 </header>
 <main>
-    <section>
-        <h2>Search for Products</h2>
-        <p>These are the products you looking for.</p>
-        <br>
-        <br>
-        <br>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container-fluid">
+            <div class="text-start">
+                <h2 class="fs-5"><b>Search results for: </b>${searchText}</h2>
+            </div>
+            <hr>
+
+            <c:choose>
+                <c:when test="${empty searchText}">
+                    <p class="fs-4">No search parameter.</p>
+                </c:when>
+                <c:when test="${not empty searchText and empty users}">
+                    <p class="fs-4">No results found.</p>
+                </c:when>
+                <c:otherwise>
+                    <div class="row g-4">
+                        <c:forEach items="${users}" var="user">
+                            <div class="col-6 col-md-4 col-xl-3">
+                                <div class="card bg-secondary text-light">
+                                    <div class="card-body text-center">
+                                        <img class="rounded mb-3"
+                                             src="${pageContext.request.contextPath}/resources/images/subproducts/${subproduct.id}/${subproduct.image1}"
+                                             alt="">
+                                        <h3 class="card-title mb-3">${subproduct.name}</h3>
+                                        <p class="card-text">$${subproduct.price} (${subproduct.rating})</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </section>
     <section>
         <h2>Search bar</h2>

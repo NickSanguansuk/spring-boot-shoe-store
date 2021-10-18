@@ -2,10 +2,13 @@ package com.company.shoe_store.data.entity;
 
 //import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -46,7 +49,7 @@ public class Item {
     private Category category;
 
     @Basic
-    @Column(name = "star_rating", columnDefinition = "DECIMAL", precision = 2, scale = 1)
+    @Column(name = "star_rating", columnDefinition = "DECIMAL", precision = 9, scale = 8)
     private Double starRating;
 
     @Basic
@@ -56,6 +59,10 @@ public class Item {
     @Basic
     @Column(name = "description")
     private String description;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "itemObject", fetch = FetchType.LAZY)
+    private List<Subproduct> subproducts = new ArrayList<>();
 
     // Constructors
     public Item() {

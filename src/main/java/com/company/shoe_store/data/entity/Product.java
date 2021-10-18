@@ -2,6 +2,7 @@ package com.company.shoe_store.data.entity;
 
 //import jakarta.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +21,14 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Basic
-    @Column(name = "subproduct_id", nullable = false)
-    private Integer subproductId;
+    //@Basic
+    //@Column(name = "subproduct_id", nullable = false)
+    //private Integer subproductId;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subproduct_id", nullable = false)
+    private Subproduct subproductObject;
 
     @Basic
     @Column(name = "size", nullable = false, columnDefinition = "DECIMAL", precision = 3, scale = 1)
@@ -113,7 +119,8 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", subproductId=" + subproductId +
+                //", subproductObject=" + subproductObject +
+                ", subproductId=" + subproductObject.getId() +
                 ", size=" + size +
                 ", price=" + price +
                 ", availability=" + availability +
