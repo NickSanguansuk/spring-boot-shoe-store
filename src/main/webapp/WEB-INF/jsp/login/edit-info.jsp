@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Create-User Page</title>
+    <title>Login / Edit-Info Page</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/css/styles-login-create-user.css">
+          href="${pageContext.request.contextPath}/resources/css/styles-login-edit-info.css">
     <!-- JavaScript -->
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
@@ -27,17 +27,21 @@
 <main>
     <section class="bg-light text-dark p-4 text-center my-section-container">
         <div class="container">
-            <form method="post" action="/login/create-user" style="max-width: 600px; margin: auto;">
-                <img class="rounded m-4"
-                     src="${pageContext.request.contextPath}/resources/images/logo/feetfirst8.jpg"
-                     alt="FeetFirst Logo" width="300" height="auto">
-                <h1 class="h3 mb-3">Create a user account</h1>
+            <form method="post" action="/login/edit-info" style="max-width: 600px; margin: auto;">
+                <%--<img class="rounded m-4"--%>
+                <%--     src="${pageContext.request.contextPath}/resources/images/logo/feetfirst8.jpg"--%>
+                <%--     alt="FeetFirst Logo" width="300" height="auto">--%>
+                <h1 class="h3 mb-3">Edit user information</h1>
 
                 <div class="text-start">
                     <c:forEach items="${errorMessages}" var="errorMessage">
                         <span style='color:red'>${errorMessage}</span>
                         <br>
                     </c:forEach>
+
+                    <c:if test="${editSuccess}">
+                        <div style="color:green">Successfully edited user information.</div>
+                    </c:if>
                 </div>
                 <hr>
 
@@ -63,30 +67,6 @@
                         </c:forEach>
                     </div>
 
-                    <%--<label>--%>
-                    <%--    First Name:--%>
-                    <%--    <input type="text" name="firstName" value="${form.firstName}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "firstName"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
-                    <%--<label>--%>
-                    <%--    Last Name:--%>
-                    <%--    <input type="text" name="lastName" value="${form.lastName}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "lastName"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
                     <div class="col-md-12">
                         <label for="my-create-email" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="my-create-email" name="email"
@@ -97,18 +77,6 @@
                             </c:if>
                         </c:forEach>
                     </div>
-
-                    <%--<label>--%>
-                    <%--    Email:--%>
-                    <%--    <input type="email" name="email" value="${form.email}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "email"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
 
                     <div class="col-md-6">
                         <label for="my-create-password" class="form-label">Password:</label>
@@ -133,30 +101,6 @@
                         </c:forEach>
                     </div>
 
-                    <%--<label>--%>
-                    <%--    Password:--%>
-                    <%--    <input type="password" name="password" value="${form.password}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "password"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
-                    <%--<label>--%>
-                    <%--    Confirm Password:--%>
-                    <%--    <input type="password" name="confirmPassword" value="${form.confirmPassword}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "confirmPassword"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
                     <div class="col-md-12">
                         <label for="my-create-phone" class="form-label">Phone number:</label>
                         <input type="text" class="form-control" id="my-create-phone" name="phone"
@@ -168,18 +112,6 @@
                         </c:forEach>
                     </div>
 
-                    <%--<label>--%>
-                    <%--    Phone Number:--%>
-                    <%--    <input type="text" name="phone" value="${form.phone}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "phone"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
                     <div class="col-md-12">
                         <label for="my-create-address" class="form-label">Address:</label>
                         <input type="text" class="form-control" id="my-create-address" name="address"
@@ -190,18 +122,6 @@
                             </c:if>
                         </c:forEach>
                     </div>
-
-                    <%--<label>--%>
-                    <%--    Address:--%>
-                    <%--    <input type="text" name="address" value="${form.address}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "address"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
 
                     <div class="col-md-4">
                         <label for="my-create-city" class="form-label">City:</label>
@@ -234,44 +154,8 @@
                         </c:forEach>
                     </div>
 
-                    <%--<label>--%>
-                    <%--    City:--%>
-                    <%--    <input type="text" name="city" value="${form.city}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "city"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
-                    <%--<label>--%>
-                    <%--    State:--%>
-                    <%--    <input type="text" name="state" value="${form.state}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "state"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
-                    <%--<label>--%>
-                    <%--    Zip Code:--%>
-                    <%--    <input type="text" name="zipCode" value="${form.zipCode}" required>--%>
-                    <%--    <c:forEach items="${errorFields}" var="errorField">--%>
-                    <%--        <c:if test='${errorField.field == "zipCode"}'>--%>
-                    <%--            <br>--%>
-                    <%--            <span style='color:red'>${errorField.defaultMessage}</span>--%>
-                    <%--        </c:if>--%>
-                    <%--    </c:forEach>--%>
-                    <%--</label>--%>
-                    <%--<br>--%>
-
                     <div class="col-md-12 mt-4">
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Save</button>
                         <%--<input type="submit" name="submit" value="Submit">--%>
                     </div>
                 </div>

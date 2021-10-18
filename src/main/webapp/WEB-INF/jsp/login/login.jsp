@@ -31,7 +31,7 @@
                 <img class="rounded m-4"
                      src="${pageContext.request.contextPath}/resources/images/logo/feetfirst8.jpg"
                      alt="FeetFirst Logo" width="300" height="auto">
-                <h1 class="h3, mb-3">Please sign in</h1>
+                <h1 class="h3 mb-3">Please sign in</h1>
 
                 <c:if test="${error}">
                     <div style="color:red">Sign in FAILED: Invalid username or password.</div>

@@ -26,28 +26,66 @@
     <%--<br>--%>
 </header>
 <main>
-    <section>
-        <h2>Your Inbox section</h2>
-        <p>This is your Inbox section.</p>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container text-start">
+            <h1 class="h2 mb-0">Your Account</h1>
+            <hr>
 
-        <h3>Welcome ${welcomeUserMessage}</h3>
+            <div class="row g-5 my-0">
+                <div class="col-md-8">
+                    <p class="fs-5"><b>Welcome, </b>${welcomeUserMessage}</p>
+                    <p class="fs-5"><b>Account type: </b>${accountType}</p>
+                </div>
+                <div class="col-md-2">
+                    <sec:authorize access="hasAuthority('USER')">
+                        <a href="/login/edit-info" class="btn btn-primary btn-lg active" role="button"
+                           aria-pressed="true">
+                            Edit User Information
+                        </a>
+                    </sec:authorize>
+                </div>
+                <div class="col-md-2">
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <a href="/admin/protected" class="btn btn-primary btn-lg active" role="button"
+                           aria-pressed="true">
+                            Go to Admin Page
+                        </a>
+                    </sec:authorize>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row g-5 my-2">
+                <div class="col-md-12">
+                    <p class="fs-5"><b>Order History</b></p>
+                </div>
+                <div class="col-md-12">
+
+                </div>
+                <div class="col-md-12">
+
+                </div>
+            </div>
+
+        </div>
     </section>
-    <section>
-        <sec:authorize access="hasAuthority('USER')">
-            <h2>User has USER authorization.</h2>
-            <a href="/index">---> Go to "index" Page</a>
-            <br>
-        </sec:authorize>
-        <sec:authorize access="hasAuthority('ADMIN')">
-            <h2>User has ADMIN authorization.</h2>
-            <a href="/admin/protected">---> Go to "admin/protected" Page</a>
-            <br>
-        </sec:authorize>
-    </section>
-    <section>
-        <br>
-        <a href="/login/logout">Logout</a>
-    </section>
+    <%--<section>--%>
+    <%--    <sec:authorize access="hasAuthority('USER')">--%>
+    <%--        <h2>User has USER authorization.</h2>--%>
+    <%--        <a href="/index">---> Go to "index" Page</a>--%>
+    <%--        <br>--%>
+    <%--    </sec:authorize>--%>
+    <%--    <sec:authorize access="hasAuthority('ADMIN')">--%>
+    <%--        <h2>User has ADMIN authorization.</h2>--%>
+    <%--        <a href="/admin/protected">---> Go to "admin/protected" Page</a>--%>
+    <%--        <br>--%>
+    <%--    </sec:authorize>--%>
+    <%--</section>--%>
+    <%--<section>--%>
+    <%--    <br>--%>
+    <%--    <a href="/login/logout">Logout</a>--%>
+    <%--</section>--%>
 </main>
 <footer>
     <%--<br>--%>

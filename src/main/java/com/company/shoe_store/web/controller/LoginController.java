@@ -6,6 +6,7 @@ import com.company.shoe_store.data.repository.UserRepository;
 import com.company.shoe_store.data.repository.UserRoleRepository;
 import com.company.shoe_store.security.AuthenticatedUserService;
 import com.company.shoe_store.web.form.CreateUserForm;
+import com.company.shoe_store.web.form.EditInfoForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -68,7 +69,7 @@ public class LoginController {
     }
 
     //@RequestMapping(value = "/login", method = RequestMethod.GET)
-    @GetMapping(value =  {"", "/login"})
+    @GetMapping(value = {"", "/login"})
     public ModelAndView loginGet(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
@@ -79,7 +80,7 @@ public class LoginController {
         return modelAndView;
     }
 
-    @PostMapping(value =  {"", "/login"})
+    @PostMapping(value = {"", "/login"})
     public ModelAndView loginPost(HttpServletRequest request) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
@@ -117,7 +118,7 @@ public class LoginController {
         // Form validation
         modelAndView.addObject("form", form);
 
-        System.out.println("---> form: " + form.toString());
+        System.out.println("---> form (create-user): " + form.toString());
 
         if (bindingResult.hasErrors()) {
             List<String> errorMessages = new ArrayList<>();
@@ -197,6 +198,17 @@ public class LoginController {
             modelAndView.addObject("welcomeUserMessage", messageStr);
             //modelAndView.addObject("userFirstNameDisplay", user.getFirstName());
             session.setAttribute("userFirstNameDisplay", user.getFirstName());
+
+            session.setAttribute("userId", user.getId());
+
+            List<UserRole> userRoles = user.getUserRoles();
+            String accountType = "USER";
+            for (UserRole ur : userRoles) {
+                if (ur.getRole().equals(UserRole.Role.ADMIN)) {
+                    accountType = "ADMIN";
+                }
+            }
+            session.setAttribute("accountType", accountType);
         } else {
             System.out.println("---> User needs to log in first.");
             modelAndView = new ModelAndView("login/login");
@@ -218,6 +230,84 @@ public class LoginController {
 
         return modelAndView;
     }
+
+    @GetMapping(value = "/edit-info")
+    public ModelAndView editInfoGet(HttpServletRequest request, HttpSession session) {
+        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
+
+        ModelAndView modelAndView = new ModelAndView("login/edit-info");
+
+        User user = userRepository.findUserById((Integer)session.getAttribute("userId"));
+
+        EditInfoForm form = new EditInfoForm();
+        form.setFirstName(user.getFirstName());
+        form.setLastName(user.getLastName());
+        form.setPhone(user.getPhone());
+        form.setEmail(user.getEmail());
+        form.setAddress(user.getAddress());
+        form.setCity(user.getCity());
+        form.setState(user.getState());
+        form.setZipCode(user.getZipCode());
+
+        modelAndView.addObject("form", form);
+
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/edit-info")
+    public ModelAndView editInfoPost(HttpServletRequest request, @Valid EditInfoForm form, BindingResult bindingResult, HttpSession session) throws IOException {
+        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
+
+        ModelAndView modelAndView = new ModelAndView("login/edit-info");
+
+        // Form validation
+        modelAndView.addObject("form", form);
+
+        System.out.println("---> form (edit-info): " + form.toString());
+
+        if (bindingResult.hasErrors()) {
+            List<String> errorMessages = new ArrayList<>();
+
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                System.out.println(error.getField() + " = " + error.getDefaultMessage());
+                errorMessages.add(error.getDefaultMessage());
+            }
+
+            modelAndView.addObject("errorFields", bindingResult.getFieldErrors());
+            modelAndView.addObject("errorMessages", errorMessages);
+
+            return modelAndView;
+        }
+
+        // Business logic
+        User user = userRepository.findUserById((Integer)session.getAttribute("userId"));
+
+        user.setFirstName(form.getFirstName());
+        user.setLastName(form.getLastName());
+        user.setEmail(form.getEmail());
+        //user.setPassword(form.getPassword());
+        user.setPassword(passwordEncoder.encode(form.getPassword()));
+        user.setPhone(form.getPhone());
+        user.setAddress(form.getAddress());
+        user.setCity(form.getCity());
+        user.setState(form.getState());
+        user.setZipCode(form.getZipCode());
+
+        System.out.println("---> user: " + user);
+
+        userRepository.save(user); // Commit to database
+
+        System.out.println("---> Updated User in the Database.");
+
+        // Correct the display name
+        session.setAttribute("userFirstNameDisplay", user.getFirstName());
+
+        modelAndView.addObject("editSuccess", true);
+
+        return modelAndView;
+    }
+
+
 }
 
 
