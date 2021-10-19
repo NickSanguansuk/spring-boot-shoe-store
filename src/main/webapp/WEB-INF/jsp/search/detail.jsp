@@ -99,9 +99,18 @@
                             <c:forEach items="${subproduct.itemObject.subproducts}" var="sub">
                                 <div class="col-2 my-color-image-column p-0 me-1" style="max-width: 15%;">
                                     <a class="text-decoration-none" href="/search/detail?subId=${sub.id}">
-                                        <img class="img-fluid w-100 rounded"
-                                             src="${pageContext.request.contextPath}/resources/images/subproducts/${sub.id}/img1.jpg"
-                                             alt="">
+                                        <c:choose>
+                                            <c:when test="${sub.id == subproduct.id}">
+                                                <img class="img-fluid w-100 rounded"
+                                                     src="${pageContext.request.contextPath}/resources/images/subproducts/${sub.id}/img1.jpg"
+                                                     alt="" style="border-style: solid">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img class="img-fluid w-100 rounded"
+                                                     src="${pageContext.request.contextPath}/resources/images/subproducts/${sub.id}/img1.jpg"
+                                                     alt="">
+                                            </c:otherwise>
+                                        </c:choose>
                                         <span class="my-hidden">Chosen Color</span>
                                     </a>
                                 </div>
@@ -136,8 +145,14 @@
                             <div class="d-flex">
                                 <div style="max-width: 80px;">
                                     <label class="sr-only form-label" for="my-quantity-to-cart">Password</label>
-                                    <input class="form-control" type="number" id="my-quantity-to-cart" name="quantity"
+                                    <input class="form-control" type="number" id="my-quantity-to-cart"
+                                           name="productQuantity"
                                            value="1" required>
+                                    <c:forEach items="${errorFields}" var="errorField">
+                                        <c:if test='${errorField.field == "productQuantity"}'>
+                                            <span style='color:red'>${errorField.defaultMessage}</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div>
                                 <div class="ms-3">
                                     <button type="submit" class="btn btn-md btn-primary btn-block">Add To Cart</button>

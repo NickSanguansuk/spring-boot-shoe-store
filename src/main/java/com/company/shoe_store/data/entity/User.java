@@ -84,6 +84,10 @@ public class User {
     //@OneToMany(targetEntity = UserRole.class) // Error
     private List<UserRole> userRoles = new ArrayList<>();
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userObjectCart", fetch = FetchType.LAZY)
+    private List<CartItem> cartItems = new ArrayList<>();
+
     // Constructors
     public User() {
     }
@@ -196,20 +200,21 @@ public class User {
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", userRoles=" + userRoles +
+                ", cartItems=" + cartItems +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(address, user.address) && Objects.equals(city, user.city) && Objects.equals(state, user.state) && Objects.equals(zipCode, user.zipCode) && Objects.equals(userRoles, user.userRoles);
-    }
+    //@Override
+    //public boolean equals(Object o) {
+    //    if (this == o) return true;
+    //    if (o == null || getClass() != o.getClass()) return false;
+    //    User user = (User) o;
+    //    return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(address, user.address) && Objects.equals(city, user.city) && Objects.equals(state, user.state) && Objects.equals(zipCode, user.zipCode) && Objects.equals(userRoles, user.userRoles);
+    //}
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, phone, address, city, state, zipCode, userRoles);
-    }
+    //@Override
+    //public int hashCode() {
+    //    return Objects.hash(id, firstName, lastName, email, password, phone, address, city, state, zipCode, userRoles);
+    //}
 
 }

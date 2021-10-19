@@ -1,23 +1,22 @@
 package com.company.shoe_store.web.controller;
 
-import com.company.shoe_store.data.entity.Item;
-import com.company.shoe_store.data.entity.Product;
-import com.company.shoe_store.data.entity.Subproduct;
-import com.company.shoe_store.data.entity.User;
-import com.company.shoe_store.data.repository.ItemRepository;
-import com.company.shoe_store.data.repository.ProductRepository;
-import com.company.shoe_store.data.repository.SubproductRepository;
-import com.company.shoe_store.data.repository.UserRepository;
+import com.company.shoe_store.data.entity.*;
+import com.company.shoe_store.data.repository.*;
+import com.company.shoe_store.web.form.AddToCartForm;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +24,13 @@ import java.util.List;
 @RequestMapping(value = "/search")
 public class SearchController {
 
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
     private ItemRepository itemRepository;
-
     private SubproductRepository subproductRepository;
-
     private ProductRepository productRepository;
+    private UserRepository userRepository;
+    private CartItemRepository cartItemRepository;
 
     // Constructors
     // No-argument constructor
@@ -38,10 +39,12 @@ public class SearchController {
 
     // Specialized constructor
     @Autowired
-    public SearchController(ItemRepository itemRepository, SubproductRepository subproductRepository, ProductRepository productRepository) {
+    public SearchController(ItemRepository itemRepository, SubproductRepository subproductRepository, ProductRepository productRepository, UserRepository userRepository, CartItemRepository cartItemRepository) {
         this.itemRepository = itemRepository;
         this.subproductRepository = subproductRepository;
         this.productRepository = productRepository;
+        this.userRepository = userRepository;
+        this.cartItemRepository = cartItemRepository;
     }
 
     @RequestMapping(value = {"", "/search"}, method = {RequestMethod.GET, RequestMethod.POST})
@@ -67,6 +70,9 @@ public class SearchController {
 
         modelAndView.addObject("subproducts", subproducts);
         modelAndView.addObject("searchText", searchText);
+
+        // Testing (too much printing; need to comment out)
+        subproducts.forEach(x -> System.out.println("---> Searched result: subproductId=" + x.getId()));
 
         return modelAndView;
     }
@@ -94,6 +100,77 @@ public class SearchController {
 
         modelAndView.addObject("subproduct", subproduct);
         modelAndView.addObject("product", product);
+
+        return modelAndView;
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(value = "/detail")
+    public ModelAndView detailPost(HttpServletRequest request, @RequestParam(required = true) Integer subId, @RequestParam(required = false) Integer proId, @Valid AddToCartForm form, BindingResult bindingResult, HttpSession session) throws Exception {
+        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("search/detail");
+
+        // Form validation
+        modelAndView.addObject("form", form);
+
+        System.out.println("---> form (AddToCartForm): " + form.toString());
+
+        if (bindingResult.hasErrors()) {
+            List<String> errorMessages = new ArrayList<>();
+
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                System.out.println(error.getField() + " = " + error.getDefaultMessage());
+                errorMessages.add(error.getDefaultMessage());
+            }
+
+            modelAndView.addObject("errorFields", bindingResult.getFieldErrors());
+            modelAndView.addObject("errorMessages", errorMessages);
+
+            return modelAndView;
+        }
+
+        Subproduct subproduct = subproductRepository.findSubproductById(subId);
+
+        if (subproduct == null) {
+            throw new Exception("Subproduct ID " + subId + " does not exist.");
+        }
+
+        Product product;
+
+        if (proId == null) {
+            product = subproduct.getProducts().get(0);
+        } else {
+            product = productRepository.findProductById(proId);
+        }
+
+        modelAndView.addObject("subproduct", subproduct);
+        modelAndView.addObject("product", product);
+
+        // Business logic
+        CartItem cartItem = new CartItem();
+
+        User user = userRepository.findUserById((Integer)session.getAttribute("userId"));
+
+        CartItemKey key = new CartItemKey();
+        key.setUserIdKey(user.getId());
+        key.setProductIdKey(product.getId());
+
+        cartItem.setKey(key);
+        cartItem.setUserObjectCart(user);
+        cartItem.setProductObjectCart(product);
+        cartItem.setQuantity(form.getProductQuantity());
+
+        System.out.println("---> cartItem: " + cartItem);
+        LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
+
+        // Testing
+        System.out.println("---> Testing ---> cartItems: " + cartItemRepository.findCartItemsByUserObjectCart(user));
+
+        cartItemRepository.save(cartItem); // Commit to database
+
+        System.out.println("---> Added new Product to the Cart (Database).");
 
         return modelAndView;
     }

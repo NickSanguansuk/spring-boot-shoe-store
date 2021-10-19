@@ -7,6 +7,8 @@ import com.company.shoe_store.data.repository.UserRoleRepository;
 import com.company.shoe_store.security.AuthenticatedUserService;
 import com.company.shoe_store.web.form.CreateUserForm;
 import com.company.shoe_store.web.form.EditInfoForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,6 +30,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/login")
 public class LoginController {
+
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     //@Autowired
     private UserRepository userRepository;
@@ -149,6 +153,7 @@ public class LoginController {
         user.setZipCode(form.getZipCode());
 
         System.out.println("---> user: " + user);
+        LOG.debug("########## Created a new User in the database ---> user: " + user + "##########");
 
         userRepository.save(user); // Commit to database
 
@@ -160,6 +165,7 @@ public class LoginController {
         userRole.setRole(UserRole.Role.USER);
 
         System.out.println("---> userRole: " + userRole);
+        LOG.debug("########## Created a new UserRole in the database ---> userRole: " + userRole + "##########");
 
         userRoleRepository.save(userRole); // Commit to database
 
@@ -294,6 +300,7 @@ public class LoginController {
         user.setZipCode(form.getZipCode());
 
         System.out.println("---> user: " + user);
+        LOG.debug("########## Updated a User in the database ---> user: " + user + "##########");
 
         userRepository.save(user); // Commit to database
 

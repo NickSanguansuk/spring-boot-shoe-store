@@ -19,6 +19,22 @@ public class OrderDetailKey implements Serializable {
     public OrderDetailKey() {
     }
 
+    public Integer getOrderIdKey() {
+        return orderIdKey;
+    }
+
+    public void setOrderIdKey(Integer orderIdKey) {
+        this.orderIdKey = orderIdKey;
+    }
+
+    public Integer getProductIdKey() {
+        return productIdKey;
+    }
+
+    public void setProductIdKey(Integer productIdKey) {
+        this.productIdKey = productIdKey;
+    }
+
     @Override
     public String toString() {
         return "OrderDetailKey{" +

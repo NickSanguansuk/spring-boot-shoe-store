@@ -49,6 +49,10 @@ public class Product {
     @OneToMany(mappedBy = "productObject", fetch = FetchType.LAZY)
     private List<OrderDetail> orderDetails;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "productObjectCart", fetch = FetchType.LAZY)
+    private List<CartItem> cartItems;
+
     // Constructors
     public Product() {
     }
@@ -125,6 +129,7 @@ public class Product {
                 ", price=" + price +
                 ", availability=" + availability +
                 ", orderDetails=" + orderDetails +
+                ", cartItems=" + cartItems +
                 '}';
     }
 

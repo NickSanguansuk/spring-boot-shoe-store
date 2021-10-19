@@ -16,6 +16,22 @@ public class CartItemKey implements Serializable {
     public CartItemKey() {
     }
 
+    public Integer getUserIdKey() {
+        return userIdKey;
+    }
+
+    public void setUserIdKey(Integer userIdKey) {
+        this.userIdKey = userIdKey;
+    }
+
+    public Integer getProductIdKey() {
+        return productIdKey;
+    }
+
+    public void setProductIdKey(Integer productIdKey) {
+        this.productIdKey = productIdKey;
+    }
+
     @Override
     public String toString() {
         return "CartItemKey{" +

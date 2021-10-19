@@ -19,13 +19,13 @@ public class CartItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userIdKey")
     @JoinColumn(name = "user_id", nullable = false)
-    private User userObject;
+    private User userObjectCart;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("productIdKey")
     @JoinColumn(name = "product_id", nullable = false)
-    private Product productObject;
+    private Product productObjectCart;
 
     @Basic
     @Column(name = "quantity", nullable = false)
@@ -39,10 +39,10 @@ public class CartItem {
     public String toString() {
         return "CartItem{" +
                 "key=" + key +
-                //", userObject=" + userObject +
-                ", userId=" + userObject.getId() +
-                //", productObject=" + productObject +
-                ", productId=" + productObject.getId() +
+                //", userObjectCart=" + userObjectCart +
+                ", userId=" + userObjectCart.getId() +
+                //", productObjectCart=" + productObjectCart +
+                ", productId=" + productObjectCart.getId() +
                 ", quantity=" + quantity +
                 '}';
     }
