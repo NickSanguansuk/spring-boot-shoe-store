@@ -21,30 +21,30 @@
     <jsp:include page="../include/header.jsp"/>
 </header>
 <main>
-    <section>
-        <div class="container-fluid">
-            <br>
-            <h1>Exception Thrown</h1>
-            <br>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid">
-            <c:if test="${not empty message}">
-                <p>${message}</p>
-            </c:if>
-            <c:if test="${not empty stackTrace}">
-                <br/>
-                <p>${stackTrace}</p>
-            </c:if>
-        </div>
-    </section>
-    <section>
-        <div class="container-fluid">
-            <br>
-            <a href="/index">Go to Home Page</a>
-            <br>
-            <br>
+    <section class="p-4 my-section-container">
+        <div class="container">
+            <div class="text-start">
+                <br>
+                <h1>Exception Thrown</h1>
+                <br>
+            </div>
+
+            <div class="text-start">
+                <c:if test="${not empty message}">
+                    <p>${message}</p>
+                </c:if>
+                <c:if test="${not empty stackTrace}">
+                    <br/>
+                    <p>${stackTrace}</p>
+                </c:if>
+            </div>
+
+            <div class="text-start">
+                <br>
+                <a href="/index">Go to Home Page</a>
+                <br>
+                <br>
+            </div>
         </div>
     </section>
 </main>

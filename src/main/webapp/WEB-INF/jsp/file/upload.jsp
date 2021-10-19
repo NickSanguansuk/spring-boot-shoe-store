@@ -25,45 +25,53 @@
     <%--<br>--%>
 </header>
 <main>
-    <section>
-        <h2>File Upload section</h2>
-        <p>This is the File Upload section.</p>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container">
+            <div class="text-start">
+                <h2>File Upload section</h2>
+                <p>This is the File Upload section.</p>
+            </div>
 
-        <form method="post" action="/file/upload" enctype="multipart/form-data">
-            <label>
-                Put file description here:
-                <input type="text" name="text">
-            </label>
-            <br>
-            <label>
-                Select file to upload:
-                <br>
-                <input type="file" name="file">
-                <br>
-                <%--<input type="file" name="file">--%>
-                <%--<br>--%>
-                <%--<input type="file" name="file">--%>
-                <%--<br>--%>
-                <input type="submit" name="submit" value="Submit">
-            </label>
-        </form>
-        <br>
-    </section>
-    <section>
-        <h2>Submitted File</h2>
-        <table>
-            <tr>
-                <td>OriginalFileName:</td>
-                <td>${fileSubmitted.originalFilename}</td>
-            </tr>
-            <tr>
-                <td>Type:</td>
-                <td>${fileSubmitted.contentType}</td>
-            </tr>
-        </table>
-    </section>
-    <section>
-        <img class="my-uploaded-image" src="https://wasin-first-bucket.s3.us-east-2.amazonaws.com/images/${imageName}">
+            <div class="text-start">
+                <form method="post" action="/file/upload" enctype="multipart/form-data">
+                    <label>
+                        Put file description here:
+                        <input type="text" name="text">
+                    </label>
+                    <br>
+                    <label>
+                        Select file to upload:
+                        <br>
+                        <input type="file" name="file">
+                        <br>
+                        <%--<input type="file" name="file">--%>
+                        <%--<br>--%>
+                        <%--<input type="file" name="file">--%>
+                        <%--<br>--%>
+                        <input type="submit" name="submit" value="Submit">
+                    </label>
+                </form>
+            </div>
+
+            <div class="text-start">
+                <h2>Submitted File</h2>
+                <table>
+                    <tr>
+                        <td>OriginalFileName:</td>
+                        <td>${fileSubmitted.originalFilename}</td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>${fileSubmitted.contentType}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="text-start">
+                <img class="my-uploaded-image"
+                     src="https://wasin-first-bucket.s3.us-east-2.amazonaws.com/images/${imageName}">
+            </div>
+        </div>
     </section>
 </main>
 <footer>

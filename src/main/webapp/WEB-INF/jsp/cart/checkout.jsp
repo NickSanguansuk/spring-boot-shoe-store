@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nav / Men Page</title>
+    <title>Cart / Checkout Page</title>
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <%--<link rel="stylesheet" type="text/css" href="css/styles.css">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/css/styles-nav-men.css">
+          href="${pageContext.request.contextPath}/resources/css/styles-cart-checkout.css">
     <!-- JavaScript -->
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
 </head>
@@ -23,7 +23,7 @@
     <jsp:include page="../include/header.jsp"/>
 </header>
 <main>
-    <section class="bg-light text-dark p-2 text-center my-section-container">
+    <section class="bg-light text-dark p-4 text-center my-section-container">
         <div class="container-fluid px-0">
 
         </div>

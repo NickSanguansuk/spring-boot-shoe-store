@@ -25,8 +25,10 @@
     <%--<br>--%>
 </header>
 <main>
-    <section>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container-fluid px-0">
 
+        </div>
     </section>
     <%--<section>--%>
     <%--    <h1>Search Detail Page</h1>--%>

@@ -23,9 +23,10 @@
     <jsp:include page="../include/header.jsp"/>
 </header>
 <main>
-    <section>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container-fluid px-0">
 
-
+        </div>
     </section>
 </main>
 <footer>

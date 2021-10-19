@@ -25,12 +25,17 @@
     <%--<br>--%>
 </header>
 <main>
-    <section>
-        <h2>Your Admin Protected section</h2>
-        <p>This is your Admin Protected section.</p>
-    </section>
-    <section>
-        <a href="/login/logout">Logout</a>
+    <section class="bg-light text-dark p-4 text-center my-section-container">
+        <div class="container">
+            <div class="text-start">
+                <h2>Your Admin Protected section</h2>
+                <p>This is your Admin Protected section.</p>
+            </div>
+
+            <div class="text-start">
+                <a href="/login/logout">Logout</a>
+            </div>
+        </div>
     </section>
 </main>
 <footer>

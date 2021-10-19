@@ -71,7 +71,8 @@ footer a:hover {
 
 .my-section-container {
     /*max-width: 1244px;*/
-    max-width: 1600px;
+    /*max-width: 1600px;*/
+    max-width: 1420px; /* a little more than container-xxl */
     margin: auto;
 }
 

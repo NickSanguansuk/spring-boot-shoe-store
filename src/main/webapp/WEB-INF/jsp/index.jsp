@@ -24,6 +24,8 @@
     <%--<br>--%>
 </header>
 <main>
+    <%--<section class="bg-light text-dark p-2 text-center">--%>
+    <%--    <div class="container-xxl px-0">--%>
     <section class="bg-light text-dark p-2 text-center my-section-container">
         <div class="container-fluid px-0">
             <div class="d-sm-flex align-items-center justify-content-between">
@@ -37,6 +39,8 @@
         </div>
     </section>
 
+    <%--<section class="bg-dark text-light p-2 text-center">--%>
+    <%--    <div class="container-xxl px-0">--%>
     <section class="bg-dark text-light p-2 text-center my-section-container">
         <div class="container-fluid px-0">
             <div class="my-section-header">
@@ -78,6 +82,8 @@
         </div>
     </section>
 
+    <%--<section class="bg-light text-dark p-2 text-center my-brands-section">--%>
+    <%--    <div class="container-xxl px-0">--%>
     <section class="bg-light text-dark p-2 text-center my-section-container my-brands-section">
         <div class="container-fluid px-0">
             <div class="my-section-header">
