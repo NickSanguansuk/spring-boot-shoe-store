@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -45,16 +46,17 @@
                     <div class="row g-4">
                         <c:forEach items="${subproducts}" var="subproduct">
                             <div class="col-6 col-md-4 col-xl-3">
-                                <a class="text-decoration-none" href="/search/detail?id=${subproduct.id}">
+                                <a class="text-decoration-none" href="/search/detail?subId=${subproduct.id}">
                                     <div class="card bg-dark text-light my-box-shadow">
                                         <div class="card-body text-center p-1">
-                                            <img class="img-fluid rounded mb-2"
+                                            <img class="img-fluid w-100 rounded mb-2"
                                                  src="${pageContext.request.contextPath}/resources/images/subproducts/${subproduct.id}/${subproduct.image1}"
                                                  alt="">
                                             <div class="text-start px-2">
                                                 <h3 class="fs-6 card-title mb-2">${subproduct.itemObject.name}</h3>
                                                 <div class="d-flex justify-content-between mb-0">
-                                                    <p class="card-text m-0">$${subproduct.products[1].price}</p>
+                                                    <%--<p class="card-text m-0">$${subproduct.products[0].price}</p>--%>
+                                                    <p class="card-text m-0">$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subproduct.products[0].price}"/></p>
                                                     <p class="card-text m-0">[ ${subproduct.itemObject.starRating} ]</p>
                                                 </div>
                                             </div>

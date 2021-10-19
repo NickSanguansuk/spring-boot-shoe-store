@@ -52,7 +52,7 @@
                 <div class="col-md-4">
                     <div class="card bg-light my-box-shadow">
                         <div class="card-body text-center">
-                            <img class="img-fluid rounded"
+                            <img class="img-fluid w-100 rounded"
                                  src="${pageContext.request.contextPath}/resources/images/index/most-favorite.webp"
                                  alt="Most Favorite">
                             <h3 class="card-title text-dark text-start mt-2 my-img-title">Most Favorite</h3>
@@ -62,7 +62,7 @@
                 <div class="col-md-4">
                     <div class="card bg-light my-box-shadow">
                         <div class="card-body text-center">
-                            <img class="img-fluid rounded"
+                            <img class="img-fluid w-100 rounded"
                                  src="${pageContext.request.contextPath}/resources/images/index/top-trending.webp"
                                  alt="Top Trending">
                             <h3 class="card-title text-dark text-start mt-2 my-img-title">Top Trending</h3>
@@ -72,7 +72,7 @@
                 <div class="col-md-4">
                     <div class="card bg-light my-box-shadow">
                         <div class="card-body text-center">
-                            <img class="img-fluid rounded"
+                            <img class="img-fluid w-100 rounded"
                                  src="${pageContext.request.contextPath}/resources/images/index/new-arrivals.webp"
                                  alt="New Arrivals">
                             <h3 class="card-title text-dark text-start mt-2 my-img-title">New Arrivals</h3>
@@ -94,7 +94,7 @@
             <div class="row text-center g-2 g-md-4">
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/nike.jpg"
                              alt="Nike">
                         <span class="my-hidden">Nike</span>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/jordan.jpg"
                              alt="Jordan">
                         <span class="my-hidden">Jordan</span>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/adidas.jpg"
                              alt="Adidas">
                         <span class="my-hidden">Adidas</span>
@@ -118,7 +118,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/puma.jpg"
                              alt="Puma">
                         <span class="my-hidden">Puma</span>
@@ -128,7 +128,7 @@
                 <%--<div class="row text-center g-2 g-md-4 pt-4">--%>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/newbalance.jpg"
                              alt="New Balance">
                         <span class="my-hidden">New Balance</span>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/crocs.jpg"
                              alt="Crocs">
                         <span class="my-hidden">Crocs</span>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/converse.jpg"
                              alt="Converse">
                         <span class="my-hidden">Converse</span>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/reebok.jpg"
                              alt="Reebok">
                         <span class="my-hidden">Reebok</span>
@@ -162,7 +162,7 @@
                 <%--<div class="row text-center g-2 g-md-4 pt-4">--%>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/thenorthface.jpg"
                              alt="The North Face">
                         <span class="my-hidden">The North Face</span>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/champion.jpg"
                              alt="Champion">
                         <span class="my-hidden">Champion</span>
@@ -178,7 +178,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/newera.jpg"
                              alt="New Era">
                         <span class="my-hidden">New Era</span>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="col-6 col-md-3 col-xl-2 px-5 py-2 my-brands">
                     <a class="pt-0 pb-0" href="/">
-                        <img class="img-fluid rounded my-box-shadow"
+                        <img class="img-fluid w-100 rounded my-box-shadow"
                              src="${pageContext.request.contextPath}/resources/images/logo/timberland.jpg"
                              alt="Timberland">
                         <span class="my-hidden">Timberland</span>

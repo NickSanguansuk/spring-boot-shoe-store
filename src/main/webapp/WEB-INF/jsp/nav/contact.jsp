@@ -18,7 +18,7 @@
           href="${pageContext.request.contextPath}/resources/css/styles-nav-contact.css">
     <!-- JavaScript -->
     <%--<script type="text/javascript" src="js/script.js" defer></script>--%>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/script.js" defer></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/script-nav-contact.js" defer></script>
 </head>
 <body>
 <header>

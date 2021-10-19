@@ -32,7 +32,7 @@
                     <li><a href="https://www.linkedin.com/in/wasin-sanguansuk/"><i class="fab fa-linkedin"></i></a></li>
                 </ul>
             </div>
-            <p class="fs-6">Copyright &copy2021 All rights reserved by: <span class="my-footer-feetfirst"><a href="/index">FeetFirst Shoe Store</a></span></p>
+            <p class="fs-6">Copyright &copy2021 All Rights Reserved by: <span class="my-footer-feetfirst"><a href="/index">FeetFirst Shoe Store</a></span></p>
             <a href="#" class="position-absolute bottom-0 end-0 p-3">
                 <i class="bi bi-arrow-up-circle h2"></i>
             </a>

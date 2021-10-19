@@ -1,9 +1,11 @@
 package com.company.shoe_store.web.controller;
 
 import com.company.shoe_store.data.entity.Item;
+import com.company.shoe_store.data.entity.Product;
 import com.company.shoe_store.data.entity.Subproduct;
 import com.company.shoe_store.data.entity.User;
 import com.company.shoe_store.data.repository.ItemRepository;
+import com.company.shoe_store.data.repository.ProductRepository;
 import com.company.shoe_store.data.repository.SubproductRepository;
 import com.company.shoe_store.data.repository.UserRepository;
 import org.apache.commons.lang3.StringUtils;
@@ -23,12 +25,11 @@ import java.util.List;
 @RequestMapping(value = "/search")
 public class SearchController {
 
-    ////@Autowired
-    //private UserRepository userRepository;
-
     private ItemRepository itemRepository;
 
     private SubproductRepository subproductRepository;
+
+    private ProductRepository productRepository;
 
     // Constructors
     // No-argument constructor
@@ -36,14 +37,11 @@ public class SearchController {
     }
 
     // Specialized constructor
-    //@Autowired
-    //public SearchController(UserRepository userRepository) {
-    //    this.userRepository = userRepository;
-    //}
     @Autowired
-    public SearchController(ItemRepository itemRepository, SubproductRepository subproductRepository) {
+    public SearchController(ItemRepository itemRepository, SubproductRepository subproductRepository, ProductRepository productRepository) {
         this.itemRepository = itemRepository;
         this.subproductRepository = subproductRepository;
+        this.productRepository = productRepository;
     }
 
     @RequestMapping(value = {"", "/search"}, method = {RequestMethod.GET, RequestMethod.POST})
@@ -72,19 +70,28 @@ public class SearchController {
     }
 
     @GetMapping(value = "/detail")
-    public ModelAndView detailGet(HttpServletRequest request, @RequestParam(required = true) Integer id) throws Exception {
+    public ModelAndView detailGet(HttpServletRequest request, @RequestParam(required = true) Integer subId, @RequestParam(required = false) Integer proId) throws Exception {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search/detail");
 
-        Subproduct subproduct = subproductRepository.findSubproductById(id);
+        Subproduct subproduct = subproductRepository.findSubproductById(subId);
 
         if (subproduct == null) {
-            throw new Exception("Subproduct ID " + id + " does not exist.");
+            throw new Exception("Subproduct ID " + subId + " does not exist.");
+        }
+
+        Product product;
+
+        if (proId == null) {
+            product = subproduct.getProducts().get(0);
+        } else {
+            product = productRepository.findProductById(proId);
         }
 
         modelAndView.addObject("subproduct", subproduct);
+        modelAndView.addObject("product", product);
 
         return modelAndView;
     }
