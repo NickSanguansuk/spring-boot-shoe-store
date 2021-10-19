@@ -46,7 +46,7 @@
                         <c:forEach items="${subproducts}" var="subproduct">
                             <div class="col-6 col-md-4 col-xl-3">
                                 <a class="text-decoration-none" href="/search/detail?id=${subproduct.id}">
-                                    <div class="card bg-dark text-light">
+                                    <div class="card bg-dark text-light my-box-shadow">
                                         <div class="card-body text-center p-1">
                                             <img class="img-fluid rounded mb-2"
                                                  src="${pageContext.request.contextPath}/resources/images/subproducts/${subproduct.id}/${subproduct.image1}"

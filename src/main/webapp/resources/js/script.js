@@ -1,5 +1,24 @@
 
 // ---------- ---------- ---------- ---------- ----------
+// For card (hover)
+
+//$(document).ready(function () {
+//    // executes when HTML-Document is loaded and DOM is ready
+//    console.log("document is ready");
+//
+//
+//    $(".card").hover(
+//        function () {
+//            $(this).addClass('shadow-lg').css('cursor', 'pointer');
+//        }, function () {
+//            $(this).removeClass('shadow-lg');
+//        }
+//    );
+//
+//// document ready
+//});
+
+// ---------- ---------- ---------- ---------- ----------
 // For map
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoid3Nhbmd1YW5zdWsiLCJhIjoiY2t1djJ0MWZpNjRvcTJubzh3Nnd4aTR6aSJ9.uGCOx8LfekPAPWHwAyNn4g';
@@ -39,9 +58,6 @@ for (const {geometry, properties} of geoJson.features) {
 }
 
 // ---------- ---------- ---------- ---------- ----------
-
-
-
 
 
 
