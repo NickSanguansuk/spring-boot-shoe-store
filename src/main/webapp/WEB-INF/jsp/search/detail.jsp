@@ -2,6 +2,7 @@
 <%@ page import="java.io.BufferedReader" %>
 <%@ page import="java.io.InputStreamReader" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="com.company.shoe_store.data.entity.Subproduct" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -79,12 +80,15 @@
                 </div>
                 <div class="col-12 col-md-7 col-lg-7">
                     <div class="text-start">
-                        <p class="mb-4">[ ${subproduct.itemObject.starRating} ] (${subproduct.itemObject.reviewCount})</p>
+                        <p class="mb-4">[ ${subproduct.itemObject.starRating} ]
+                            (${subproduct.itemObject.reviewCount})</p>
                         <h2 class="h5 my-3"><b>${subproduct.itemObject.name}</b></h2>
 
                         <div class="d-flex justify-content-start mb-0">
                             <%--<p class="h5 my-3 me-4">$<b>${product.price}</b></p>--%>
-                            <p class="h5 my-3 me-4">$<b><fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${product.price}"/></b></p>
+                            <p class="h5 my-3 me-4">$<b><fmt:formatNumber type="number" maxFractionDigits="2"
+                                                                          minFractionDigits="2"
+                                                                          value="${product.price}"/></b></p>
                             <c:if test="${product.availability < 10}">
                                 <p class="h6 my-3 me-4" style="color: red;">Only ${product.availability} left in stock
                                     (more on the way).</p>
@@ -153,7 +157,10 @@
                         <div>
                             <p>
                                 <%
-                                    String fileName = "/resources/texts/items/1/detailFile.txt";
+                                    //String fileName = "/resources/texts/items/" + ${subproduct}.itemObject.id + "/detailFile.txt";
+                                    //String fileName = "/resources/texts/items/" + subproduct.itemObject.id + "/detailFile.txt";
+                                    String fileName = "/resources/texts/items/" + ((Subproduct) (request.getAttribute("subproduct"))).getItemObject().getId() + "/detailFile.txt";
+                                    //String fileName = "/resources/texts/items/1/detailFile.txt";
                                     InputStream ins = application.getResourceAsStream(fileName);
                                     try {
                                         if (ins == null) {

@@ -36,9 +36,9 @@
             <hr>
 
             <c:choose>
-                <c:when test="${empty searchText}">
-                    <p class="fs-4">No search parameter.</p>
-                </c:when>
+                <%--<c:when test="${empty searchText}">--%>
+                <%--    <p class="fs-4">No search parameter.</p>--%>
+                <%--</c:when>--%>
                 <c:when test="${not empty searchText and empty subproducts}">
                     <p class="fs-4">No results found.</p>
                 </c:when>
@@ -55,8 +55,11 @@
                                             <div class="text-start px-2">
                                                 <h3 class="fs-6 card-title mb-2">${subproduct.itemObject.name}</h3>
                                                 <div class="d-flex justify-content-between mb-0">
-                                                    <%--<p class="card-text m-0">$${subproduct.products[0].price}</p>--%>
-                                                    <p class="card-text m-0">$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subproduct.products[0].price}"/></p>
+                                                        <%--<p class="card-text m-0">$${subproduct.products[0].price}</p>--%>
+                                                    <p class="card-text m-0">$<fmt:formatNumber type="number"
+                                                                                                maxFractionDigits="2"
+                                                                                                minFractionDigits="2"
+                                                                                                value="${subproduct.products[0].price}"/></p>
                                                     <p class="card-text m-0">[ ${subproduct.itemObject.starRating} ]</p>
                                                 </div>
                                             </div>

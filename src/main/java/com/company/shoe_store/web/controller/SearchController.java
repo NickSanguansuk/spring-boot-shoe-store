@@ -55,6 +55,8 @@ public class SearchController {
 
         if (!StringUtils.isEmpty(searchText)) {
             items = itemRepository.findItemsByNameContains(searchText);
+        } else {
+            items = itemRepository.findAll();
         }
 
         List<Subproduct> subproducts = new ArrayList<>();

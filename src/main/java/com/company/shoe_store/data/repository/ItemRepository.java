@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
+    List<Item> findAll();
+
     Item findItemById(@Param("id") Integer id);
 
     @Query("SELECT i FROM Item i WHERE lower(i.name) like lower(concat('%', :name, '%'))")
