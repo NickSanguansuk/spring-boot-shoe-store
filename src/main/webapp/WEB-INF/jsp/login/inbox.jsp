@@ -28,7 +28,10 @@
 <main>
     <section class="bg-light text-dark p-4 text-center my-section-container">
         <div class="container text-start">
-            <h1 class="h2 mb-0">Your Account</h1>
+
+            <div class="text-start">
+                <h2 class="fs-5"><b>Your account: </b></h2>
+            </div>
             <hr>
 
             <div class="row g-5 my-0">

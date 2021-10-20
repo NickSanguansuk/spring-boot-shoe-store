@@ -30,6 +30,7 @@
     <%--    <div class="container-xxl px-0">--%>
     <section class="bg-light text-dark p-4 text-center my-section-container">
         <div class="container-fluid px-0">
+
             <div class="text-start">
                 <h2 class="fs-5"><b>Search results for: </b>${searchText}</h2>
             </div>

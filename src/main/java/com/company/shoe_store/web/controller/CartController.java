@@ -44,11 +44,17 @@ public class CartController {
     }
 
     @GetMapping(value = {"", "/cart"})
-    public ModelAndView cartGet(HttpServletRequest request) {
+    public ModelAndView cartGet(HttpServletRequest request, HttpSession session) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("cart/cart");
+
+        User user = userRepository.findUserById((Integer) session.getAttribute("userId"));
+        List<CartItem> cartItems = user.getCartItems();
+        //List<CartItem> cartItems = cartItemRepository.findCartItemsByUserObjectCart(user);
+
+        session.setAttribute("cartItems", cartItems);
 
         return modelAndView;
     }
