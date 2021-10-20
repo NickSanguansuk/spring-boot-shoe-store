@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,22 +26,24 @@ public class CartController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    private ItemRepository itemRepository;
     private SubproductRepository subproductRepository;
     private ProductRepository productRepository;
     private UserRepository userRepository;
     private CartItemRepository cartItemRepository;
+    private OrderRepository orderRepository;
+    private OrderDetailRepository orderDetailRepository;
 
     public CartController() {
     }
 
     @Autowired
-    public CartController(ItemRepository itemRepository, SubproductRepository subproductRepository, ProductRepository productRepository, UserRepository userRepository, CartItemRepository cartItemRepository) {
-        this.itemRepository = itemRepository;
+    public CartController(SubproductRepository subproductRepository, ProductRepository productRepository, UserRepository userRepository, CartItemRepository cartItemRepository, OrderRepository orderRepository, OrderDetailRepository orderDetailRepository) {
         this.subproductRepository = subproductRepository;
         this.productRepository = productRepository;
         this.userRepository = userRepository;
         this.cartItemRepository = cartItemRepository;
+        this.orderRepository = orderRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
     @GetMapping(value = {"", "/cart"})
@@ -60,11 +63,61 @@ public class CartController {
     }
 
     @PostMapping(value = {"", "/cart"})
-    public ModelAndView cartPost(HttpServletRequest request) {
+    public ModelAndView cartPost(HttpServletRequest request, HttpSession session) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("cart/cart");
+
+        User user = userRepository.findUserById((Integer) session.getAttribute("userId"));
+        List<CartItem> cartItems = user.getCartItems();
+
+        // Business logic
+        String checkoutMessages = null;
+
+        if (cartItems != null) {
+
+            Order order = new Order();
+            order.setUserObjectOrder(user);
+            order.setStatus(Order.Status.IN_PROCESS);
+            order.setOrderedDate(LocalDateTime.now());
+            order.setShippedDate(null);
+
+            System.out.println("---> order: " + order);
+            orderRepository.save(order); // Commit to database
+            LOG.debug("########## Created a new Order in the database ---> order: " + order + "##########");
+            System.out.println("---> Added new Order to the Database.");
+
+            for (int i = 0; i < cartItems.size(); i++) {
+
+                Product product = cartItems.get(i).getProductObjectCart();
+
+                OrderDetail orderDetail = new OrderDetail();
+
+                OrderDetailKey key = new OrderDetailKey();
+                key.setOrderIdKey(order.getId());
+                key.setProductIdKey(product.getId());
+
+                orderDetail.setKey(key);
+                orderDetail.setOrderObject(order);
+                orderDetail.setProductObject(product);
+                orderDetail.setQuantityOrdered(cartItems.get(i).getQuantity());
+                orderDetail.setAlreadyReviewed(false);
+
+                System.out.println("---> orderDetail: " + orderDetail);
+                orderDetailRepository.save(orderDetail); // Commit to database
+                LOG.debug("########## Created a new OrderDetail in the database ---> orderDetail: " + orderDetail + "##########");
+                System.out.println("---> Added new OrderDetail to the Database.");
+
+                cartItemRepository.delete(cartItems.get(i));
+            }
+
+            checkoutMessages = "Successfully checkout! Thank you for doing business with us.";
+        }
+
+        cartItems = cartItemRepository.findCartItemsByUserObjectCart(user);
+        session.setAttribute("cartItems", cartItems);
+        session.setAttribute("checkoutMessages", checkoutMessages);
 
         return modelAndView;
     }
@@ -151,10 +204,8 @@ public class CartController {
         }
 
         System.out.println("---> cartItem: " + cartItem);
-        LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
-
         cartItemRepository.save(cartItem); // Commit to database
-
+        LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
         System.out.println("---> Added new Product to the Cart (Database).");
 
         session.setAttribute("subproduct", subproduct);

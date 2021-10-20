@@ -153,10 +153,8 @@ public class LoginController {
         user.setZipCode(form.getZipCode());
 
         System.out.println("---> user: " + user);
-        LOG.debug("########## Created a new User in the database ---> user: " + user + "##########");
-
         userRepository.save(user); // Commit to database
-
+        LOG.debug("########## Created a new User in the database ---> user: " + user + "##########");
         System.out.println("---> Added new User to the Database.");
 
         UserRole userRole = new UserRole();
@@ -165,10 +163,8 @@ public class LoginController {
         userRole.setRole(UserRole.Role.USER);
 
         System.out.println("---> userRole: " + userRole);
-        LOG.debug("########## Created a new UserRole in the database ---> userRole: " + userRole + "##########");
-
         userRoleRepository.save(userRole); // Commit to database
-
+        LOG.debug("########## Created a new UserRole in the database ---> userRole: " + userRole + "##########");
         System.out.println("---> Added new UserRole (\"USER\") to the Database.");
 
         // Go to the next page
@@ -300,10 +296,8 @@ public class LoginController {
         user.setZipCode(form.getZipCode());
 
         System.out.println("---> user: " + user);
-        LOG.debug("########## Updated a User in the database ---> user: " + user + "##########");
-
         userRepository.save(user); // Commit to database
-
+        LOG.debug("########## Updated a User in the database ---> user: " + user + "##########");
         System.out.println("---> Updated User in the Database.");
 
         // Correct the display name

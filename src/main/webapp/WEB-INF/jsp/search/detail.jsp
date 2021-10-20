@@ -90,7 +90,8 @@
                                                                           minFractionDigits="2"
                                                                           value="${product.price}"/></b></p>
                             <c:if test="${(product.availability - productQuantityInCart) < 10}">
-                                <p class="h6 my-3 me-4" style="color: red;">Only ${product.availability - productQuantityInCart} left in stock
+                                <p class="h6 my-3 me-4" style="color: red;">
+                                    Only ${product.availability - productQuantityInCart} left in stock
                                     (more on the way).</p>
                             </c:if>
                         </div>
@@ -166,9 +167,9 @@
                             </c:if>
 
                             <c:if test="${not empty cartMessagesGood}">
-                            <span style='color:green'>${cartMessagesGood}</span>
-                            <br>
-                        </c:if>
+                                <span style='color:green'>${cartMessagesGood}</span>
+                                <br>
+                            </c:if>
                         </form>
 
                         <h3 class="h5 my-3">Product Details</h3>

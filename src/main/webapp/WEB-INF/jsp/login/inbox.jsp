@@ -37,11 +37,11 @@
             <div class="row g-5 my-0">
                 <div class="col-md-8">
                     <p class="fs-5"><b>Welcome, </b>${welcomeUserMessage}</p>
-                    <p class="fs-5"><b>Account type: </b>${accountType}</p>
+                    <p class="fs-6"><b>Account type: </b>${accountType}</p>
                 </div>
                 <div class="col-md-2">
                     <sec:authorize access="hasAuthority('USER')">
-                        <a href="/login/edit-info" class="btn btn-primary btn-lg active" role="button"
+                        <a href="/login/edit-info" class="btn btn-primary btn-md active" role="button"
                            aria-pressed="true">
                             Edit User Information
                         </a>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-2">
                     <sec:authorize access="hasAuthority('ADMIN')">
-                        <a href="/admin/protected" class="btn btn-primary btn-lg active" role="button"
+                        <a href="/admin/protected" class="btn btn-primary btn-md active" role="button"
                            aria-pressed="true">
                             Go to Admin Page
                         </a>

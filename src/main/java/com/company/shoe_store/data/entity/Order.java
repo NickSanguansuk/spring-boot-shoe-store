@@ -1,5 +1,6 @@
 package com.company.shoe_store.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,9 +28,14 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Basic
-    @Column(name = "customer_id", nullable = false)
-    private Integer customerId;
+    //@Basic
+    //@Column(name = "customer_id", nullable = false)
+    //private Integer customerId;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private User userObjectOrder;
 
     @Basic
     @Column(name = "status", nullable = false)
@@ -153,7 +159,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", customerId=" + customerId +
+                ", customerId=" + userObjectOrder.getId() +
                 ", status=" + status +
                 ", orderedDate=" + orderedDate +
                 ", shippedDate=" + shippedDate +

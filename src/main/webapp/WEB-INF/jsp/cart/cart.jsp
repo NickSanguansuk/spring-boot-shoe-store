@@ -41,12 +41,9 @@
                         <th class="fs-5">Subtotal</th>
                     </tr>
 
-                    <%!
-                        Double subtotal = 0.0;
-                        Double subtotalEachProduct = 0.0;
-                    %>
+                    <c:set var="subtotal" value="0"></c:set>
+                    <c:set var="sum" value="0"></c:set>
                     <c:forEach items="${cartItems}" var="cartItem">
-                        <%--<c:set var="subproduct" scope="session" value="${cartItem.productObject.subproductObject}"/>--%>
                         <tr>
                             <td>
                                 <div class="text-start my-cart-info">
@@ -54,7 +51,9 @@
                                          alt="">
                                     <div>
                                         <p>${cartItem.productObjectCart.subproductObject.itemObject.name}</p>
-                                        <small>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.productObjectCart.price}"/></small>
+                                        <small>$<fmt:formatNumber type="number" maxFractionDigits="2"
+                                                                  minFractionDigits="2"
+                                                                  value="${cartItem.productObjectCart.price}"/></small>
                                         <br>
                                         <a href="">Remove</a>
                                     </div>
@@ -65,13 +64,12 @@
                                     Product</label>
                                 <input type="number" id="my-each-product-quantity" value="${cartItem.quantity}">
                             </td>
+                            <c:set var="sum" value="${cartItem.productObjectCart.price * cartItem.quantity}"/>
+                            <c:set var="subtotal" value="${subtotal + sum}"/>
                             <td>
-                                $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.getProductObjectCart().getPrice() * cartItem.getQuantity()}"/>
-
-
-
-
-
+                                $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2"
+                                                   value="${sum}"/>
+                                    <%--$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${cartItem.productObjectCart.price * cartItem.quantity}"/>--%>
                             </td>
                         </tr>
                     </c:forEach>
@@ -81,23 +79,34 @@
                     <table>
                         <tr>
                             <td><b>Subtotal</b></td>
-                            <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subtotal}"/></td>
+                            <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2"
+                                                   value="${subtotal}"/></td>
                         </tr>
                         <tr>
                             <td><b>Tax</b></td>
-                            <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subtotal * 0.1025}"/></td>
+                            <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2"
+                                                   value="${subtotal * 0.1025}"/></td>
                         </tr>
                         <tr>
                             <td><b>Total</b></td>
-                            <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${subtotal * 1.1025}"/></td>
+                            <td>$<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2"
+                                                   value="${subtotal * 1.1025}"/></td>
                         </tr>
                     </table>
                 </div>
             </div>
 
-            <div class="text-end">
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</button>
-            </div>
+            <form method="post" action="/cart/cart">
+                <div class="text-end">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</button>
+                </div>
+                <div class="text-end mt-2">
+                    <c:if test="${not empty checkoutMessages}">
+                        <span style='color:green'>${checkoutMessages}</span>
+                        <br>
+                    </c:if>
+                </div>
+            </form>
 
         </div>
     </section>

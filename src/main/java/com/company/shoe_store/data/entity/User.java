@@ -88,6 +88,10 @@ public class User {
     @OneToMany(mappedBy = "userObjectCart", fetch = FetchType.LAZY)
     private List<CartItem> cartItems = new ArrayList<>();
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "userObjectOrder", fetch = FetchType.LAZY)
+    private List<Order> orders = new ArrayList<>();
+
     // Constructors
     public User() {
     }
@@ -201,6 +205,7 @@ public class User {
                 ", zipCode='" + zipCode + '\'' +
                 ", userRoles=" + userRoles +
                 ", cartItems=" + cartItems +
+                ", orders=" + orders +
                 '}';
     }
 
