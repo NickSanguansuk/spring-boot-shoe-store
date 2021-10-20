@@ -97,7 +97,7 @@ public class LoginController {
 
     //@RequestMapping(value = "/create-user", method = RequestMethod.GET)
     @GetMapping(value = "/create-user")
-    public ModelAndView createUserGet(HttpServletRequest request) {
+    public ModelAndView createUserGet(HttpServletRequest request, HttpSession session) {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         ModelAndView modelAndView = new ModelAndView("login/create-user");

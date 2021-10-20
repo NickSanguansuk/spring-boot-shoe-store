@@ -4,9 +4,9 @@ import javax.validation.constraints.Min;
 
 public class AddToCartForm {
 
+    @Min(value = 0, message = "The product quantity value must be positive.")
     private Integer productQuantity;
 
-    @Min(value = 0L, message = "The product quantity value must be positive.")
     public AddToCartForm() {
     }
 
@@ -18,4 +18,10 @@ public class AddToCartForm {
         this.productQuantity = productQuantity;
     }
 
+    @Override
+    public String toString() {
+        return "AddToCartForm{" +
+                "productQuantity=" + productQuantity +
+                '}';
+    }
 }

@@ -78,7 +78,7 @@ public class SearchController {
     }
 
     @GetMapping(value = "/detail")
-    public ModelAndView detailGet(HttpServletRequest request, @RequestParam(required = true) Integer subId, @RequestParam(required = false) Integer proId) throws Exception {
+    public ModelAndView detailGet(HttpServletRequest request, @RequestParam(required = true) Integer subId, @RequestParam(required = false) Integer proId, HttpSession session) throws Exception {
         System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
 
         ModelAndView modelAndView = new ModelAndView();
@@ -98,79 +98,20 @@ public class SearchController {
             product = productRepository.findProductById(proId);
         }
 
-        modelAndView.addObject("subproduct", subproduct);
-        modelAndView.addObject("product", product);
+        User user = userRepository.findUserById((Integer) session.getAttribute("userId"));
+        CartItem cartItem = cartItemRepository.findCartItemByUserObjectCartAndProductObjectCart(user, product);
 
-        return modelAndView;
-    }
+        Integer productQuantityInCart;
 
-    @PreAuthorize("hasAuthority('USER')")
-    @PostMapping(value = "/detail")
-    public ModelAndView detailPost(HttpServletRequest request, @RequestParam(required = true) Integer subId, @RequestParam(required = false) Integer proId, @Valid AddToCartForm form, BindingResult bindingResult, HttpSession session) throws Exception {
-        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("search/detail");
-
-        // Form validation
-        modelAndView.addObject("form", form);
-
-        System.out.println("---> form (AddToCartForm): " + form.toString());
-
-        if (bindingResult.hasErrors()) {
-            List<String> errorMessages = new ArrayList<>();
-
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                System.out.println(error.getField() + " = " + error.getDefaultMessage());
-                errorMessages.add(error.getDefaultMessage());
-            }
-
-            modelAndView.addObject("errorFields", bindingResult.getFieldErrors());
-            modelAndView.addObject("errorMessages", errorMessages);
-
-            return modelAndView;
-        }
-
-        Subproduct subproduct = subproductRepository.findSubproductById(subId);
-
-        if (subproduct == null) {
-            throw new Exception("Subproduct ID " + subId + " does not exist.");
-        }
-
-        Product product;
-
-        if (proId == null) {
-            product = subproduct.getProducts().get(0);
+        if (cartItem == null) {
+            productQuantityInCart = 0;
         } else {
-            product = productRepository.findProductById(proId);
+            productQuantityInCart = cartItem.getQuantity();
         }
 
-        modelAndView.addObject("subproduct", subproduct);
-        modelAndView.addObject("product", product);
-
-        // Business logic
-        CartItem cartItem = new CartItem();
-
-        User user = userRepository.findUserById((Integer)session.getAttribute("userId"));
-
-        CartItemKey key = new CartItemKey();
-        key.setUserIdKey(user.getId());
-        key.setProductIdKey(product.getId());
-
-        cartItem.setKey(key);
-        cartItem.setUserObjectCart(user);
-        cartItem.setProductObjectCart(product);
-        cartItem.setQuantity(form.getProductQuantity());
-
-        System.out.println("---> cartItem: " + cartItem);
-        LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
-
-        // Testing
-        System.out.println("---> Testing ---> cartItems: " + cartItemRepository.findCartItemsByUserObjectCart(user));
-
-        cartItemRepository.save(cartItem); // Commit to database
-
-        System.out.println("---> Added new Product to the Cart (Database).");
+        session.setAttribute("subproduct", subproduct);
+        session.setAttribute("product", product);
+        session.setAttribute("productQuantityInCart", productQuantityInCart);
 
         return modelAndView;
     }

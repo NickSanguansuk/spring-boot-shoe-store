@@ -89,8 +89,8 @@
                             <p class="h5 my-3 me-4">$<b><fmt:formatNumber type="number" maxFractionDigits="2"
                                                                           minFractionDigits="2"
                                                                           value="${product.price}"/></b></p>
-                            <c:if test="${product.availability < 10}">
-                                <p class="h6 my-3 me-4" style="color: red;">Only ${product.availability} left in stock
+                            <c:if test="${(product.availability - productQuantityInCart) < 10}">
+                                <p class="h6 my-3 me-4" style="color: red;">Only ${product.availability - productQuantityInCart} left in stock
                                     (more on the way).</p>
                             </c:if>
                         </div>
@@ -141,23 +141,34 @@
                         </div>
 
                         <form class="my-5" method="post"
-                              action="/search/detail?subId=${subproduct.id}&proId=${product.id}">
+                        <%--action="/search/detail?subId=${subproduct.id}&proId=${product.id}">--%>
+                              action="/cart/add-to-cart?subId=${subproduct.id}&proId=${product.id}">
                             <div class="d-flex">
                                 <div style="max-width: 80px;">
                                     <label class="sr-only form-label" for="my-quantity-to-cart">Password</label>
                                     <input class="form-control" type="number" id="my-quantity-to-cart"
                                            name="productQuantity"
                                            value="1" required>
-                                    <c:forEach items="${errorFields}" var="errorField">
-                                        <c:if test='${errorField.field == "productQuantity"}'>
-                                            <span style='color:red'>${errorField.defaultMessage}</span>
-                                        </c:if>
-                                    </c:forEach>
                                 </div>
                                 <div class="ms-3">
                                     <button type="submit" class="btn btn-md btn-primary btn-block">Add To Cart</button>
                                 </div>
                             </div>
+                            <c:forEach items="${errorFields}" var="errorField">
+                                <c:if test='${errorField.field == "productQuantity"}'>
+                                    <span style='color:red'>${errorField.defaultMessage}</span>
+                                </c:if>
+                            </c:forEach>
+
+                            <c:if test="${not empty cartMessagesBad}">
+                                <span style='color:red'>${cartMessagesBad}</span>
+                                <br>
+                            </c:if>
+
+                            <c:if test="${not empty cartMessagesGood}">
+                            <span style='color:green'>${cartMessagesGood}</span>
+                            <br>
+                        </c:if>
                         </form>
 
                         <h3 class="h5 my-3">Product Details</h3>
@@ -172,10 +183,7 @@
                         <div>
                             <p>
                                 <%
-                                    //String fileName = "/resources/texts/items/" + ${subproduct}.itemObject.id + "/detailFile.txt";
-                                    //String fileName = "/resources/texts/items/" + subproduct.itemObject.id + "/detailFile.txt";
-                                    String fileName = "/resources/texts/items/" + ((Subproduct) (request.getAttribute("subproduct"))).getItemObject().getId() + "/detailFile.txt";
-                                    //String fileName = "/resources/texts/items/1/detailFile.txt";
+                                    String fileName = "/resources/texts/items/" + ((Subproduct) (session.getAttribute("subproduct"))).getItemObject().getId() + "/detailFile.txt";
                                     InputStream ins = application.getResourceAsStream(fileName);
                                     try {
                                         if (ins == null) {
