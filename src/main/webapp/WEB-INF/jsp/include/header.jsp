@@ -81,13 +81,25 @@
                             <a class="nav-link my-nav-search" href="/search/search">Search</a>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link my-nav-men" href="/nav/men">Men</a>
+                            <form method="post" action="/search/search">
+                                <input type="hidden" name="searchText" value="men">
+                                <a class="nav-link my-nav-men" href="#" onclick="this.parentNode.submit()">Men</a>
+                            </form>
+                            <%--<a class="nav-link my-nav-men" href="/nav/men">Men</a>--%>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link my-nav-women" href="/nav/women">Women</a>
+                            <form method="post" action="/search/search">
+                                <input type="hidden" name="searchText" value="women">
+                                <a class="nav-link my-nav-men" href="#" onclick="this.parentNode.submit()">Women</a>
+                            </form>
+                            <%--<a class="nav-link my-nav-women" href="/nav/women">Women</a>--%>
                         </li>
                         <li class="navbar-item px-3">
-                            <a class="nav-link my-nav-kids" href="/nav/kids">Kids</a>
+                            <form method="post" action="/search/search">
+                                <input type="hidden" name="searchText" value="kid">
+                                <a class="nav-link my-nav-men" href="#" onclick="this.parentNode.submit()">Kids</a>
+                            </form>
+                            <%--<a class="nav-link my-nav-kids" href="/nav/kids">Kids</a>--%>
                         </li>
                         <li class="navbar-item px-3">
                             <a class="nav-link my-nav-contact" href="/nav/contact">Contact Us</a>

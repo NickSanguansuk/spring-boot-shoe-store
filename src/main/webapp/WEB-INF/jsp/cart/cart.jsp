@@ -36,9 +36,9 @@
             <div class="my-cart-page">
                 <table>
                     <tr>
-                        <th class="fs-5">Product</th>
-                        <th class="fs-5" style="text-align: center;">Quantity</th>
-                        <th class="fs-5">Subtotal</th>
+                        <th class="fs-6">Product</th>
+                        <th class="fs-6" style="text-align: center;">Quantity</th>
+                        <th class="fs-6">Subtotal</th>
                     </tr>
 
                     <c:set var="subtotal" value="0"></c:set>
@@ -47,15 +47,30 @@
                         <tr>
                             <td>
                                 <div class="text-start my-cart-info">
-                                    <img src="${pageContext.request.contextPath}/resources/images/subproducts/${cartItem.productObjectCart.subproductObject.id}/img1.jpg"
-                                         alt="">
+                                    
+                                    <form method="get" action="/search/detail">
+                                        <input type="hidden" name="subId"
+                                               value="${cartItem.productObjectCart.subproductObject.id}">
+                                        <input type="hidden" name="proId" value="${cartItem.productObjectCart.id}">
+                                        <a href="#" onclick="this.parentNode.submit()">
+                                            <img src="${pageContext.request.contextPath}/resources/images/subproducts/${cartItem.productObjectCart.subproductObject.id}/img1.jpg"
+                                                 alt="">
+
+                                        </a>
+                                        <span class="my-hidden">Cart item image</span>
+                                    </form>
+
                                     <div>
-                                        <p>${cartItem.productObjectCart.subproductObject.itemObject.name}</p>
-                                        <small>$<fmt:formatNumber type="number" maxFractionDigits="2"
-                                                                  minFractionDigits="2"
-                                                                  value="${cartItem.productObjectCart.price}"/></small>
-                                        <br>
-                                        <a href="">Remove</a>
+                                        <p class="mb-0">${cartItem.productObjectCart.subproductObject.itemObject.name}</p>
+                                        <p class="mb-3"><small>Size: ${cartItem.productObjectCart.size}</small></p>
+                                        <p>
+                                            $<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2"
+                                                               value="${cartItem.productObjectCart.price}"/>
+                                        </p>
+                                        <form method="post" action="/cart/remove">
+                                            <input type="hidden" name="proId" value="${cartItem.productObjectCart.id}">
+                                            <a href="#" onclick="this.parentNode.submit()">Remove</a>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
@@ -103,6 +118,10 @@
                 <div class="text-end mt-2">
                     <c:if test="${not empty checkoutMessages}">
                         <span style='color:green'>${checkoutMessages}</span>
+                        <br>
+                    </c:if>
+                    <c:if test="${not empty checkoutErrorMessages}">
+                        <span style='color:red'>${checkoutErrorMessages}</span>
                         <br>
                     </c:if>
                 </div>

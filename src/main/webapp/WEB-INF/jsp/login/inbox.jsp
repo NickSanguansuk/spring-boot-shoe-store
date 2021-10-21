@@ -149,7 +149,8 @@
                                                          width="140px" height="auto" alt="">
                                                 </div>
                                                 <div class="col-6">
-                                                    <p>${orderDetail.productObject.subproductObject.itemObject.name}</p>
+                                                    <p class="mb-0">${orderDetail.productObject.subproductObject.itemObject.name}</p>
+                                                    <p class="mb-3"><small>Size: ${orderDetail.productObject.size}</small></p>
                                                 </div>
                                                 <div class="col-1 text-center">
                                                     <small>$<fmt:formatNumber type="number" maxFractionDigits="2"
@@ -163,7 +164,8 @@
                                                 <div class="col-2 text-end">
                                                     <c:set var="sum"
                                                            value="${orderDetail.quantityOrdered * orderDetail.productObject.price}"/>
-                                                    <p>${sum}</p>
+                                                    <p><fmt:formatNumber type="currency" value="${sum}"/></p>
+                                                    <p>Tax: <fmt:formatNumber type="currency" value="${sum * 0.1025}"/></p>
                                                 </div>
                                             </div>
                                         </div>

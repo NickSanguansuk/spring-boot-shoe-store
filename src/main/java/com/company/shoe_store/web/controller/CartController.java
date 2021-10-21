@@ -57,9 +57,9 @@ public class CartController {
         List<CartItem> cartItems = user.getCartItems();
         //List<CartItem> cartItems = cartItemRepository.findCartItemsByUserObjectCart(user);
 
-        String checkoutMessages = null;
-        session.setAttribute("checkoutMessages", checkoutMessages);
         session.setAttribute("cartItems", cartItems);
+        session.setAttribute("checkoutMessages", null);
+        session.setAttribute("checkoutErrorMessages", null);
 
         return modelAndView;
     }
@@ -76,60 +76,118 @@ public class CartController {
 
         // Business logic
         String checkoutMessages = null;
+        String checkoutErrorMessages = null;
 
-        if (cartItems != null) {
+        if (cartItems != null && cartItems.size() != 0) {
 
-            Order order = new Order();
-            order.setUserObjectOrder(user);
-            order.setStatus(Order.Status.IN_PROCESS);
-            order.setOrderedDate(LocalDateTime.now());
-            order.setShippedDate(null);
+            boolean isQuantityOkay = true;
 
-            System.out.println("---> order: " + order);
-            orderRepository.save(order); // Commit to database
-            LOG.debug("########## Created a new Order in the database ---> order: " + order + "##########");
-            System.out.println("---> Created a new Order in the database.");
-
+            // Checking (Important!)
             for (int i = 0; i < cartItems.size(); i++) {
-
                 Product product = cartItems.get(i).getProductObjectCart();
+                if (cartItems.get(i).getQuantity() > product.getAvailability()) {
 
-                OrderDetail orderDetail = new OrderDetail();
+                    cartItems.get(i).setQuantity(product.getAvailability());
 
-                OrderDetailKey key = new OrderDetailKey();
-                key.setOrderIdKey(order.getId());
-                key.setProductIdKey(product.getId());
+                    System.out.println("---> cartItem: " + cartItems.get(i));
+                    cartItemRepository.save(cartItems.get(i)); // Commit to database
+                    LOG.debug("########## Updated a CartItem in the database ---> cartItem: " + cartItems.get(i) + "##########");
+                    System.out.println("---> Updated a CartItem in the database.");
 
-                orderDetail.setKey(key);
-                orderDetail.setOrderObject(order);
-                orderDetail.setProductObject(product);
-                orderDetail.setQuantityOrdered(cartItems.get(i).getQuantity());
-                orderDetail.setAlreadyReviewed(false);
+                    isQuantityOkay = false;
+                }
+            }
 
-                System.out.println("---> orderDetail: " + orderDetail);
-                orderDetailRepository.save(orderDetail); // Commit to database
-                LOG.debug("########## Created a new OrderDetail in the database ---> orderDetail: " + orderDetail + "##########");
-                System.out.println("---> Created a new OrderDetail in the database.");
+            if (isQuantityOkay) {
+
+                Order order = new Order();
+                order.setUserObjectOrder(user);
+                order.setStatus(Order.Status.IN_PROCESS);
+                order.setOrderedDate(LocalDateTime.now());
+                order.setShippedDate(null);
+
+                System.out.println("---> order: " + order);
+                orderRepository.save(order); // Commit to database
+                LOG.debug("########## Created a new Order in the database ---> order: " + order + "##########");
+                System.out.println("---> Created a new Order in the database.");
+
+                for (int i = 0; i < cartItems.size(); i++) {
+
+                    Product product = cartItems.get(i).getProductObjectCart();
+
+                    OrderDetail orderDetail = new OrderDetail();
+
+                    OrderDetailKey key = new OrderDetailKey();
+                    key.setOrderIdKey(order.getId());
+                    key.setProductIdKey(product.getId());
+
+                    orderDetail.setKey(key);
+                    orderDetail.setOrderObject(order);
+                    orderDetail.setProductObject(product);
+                    orderDetail.setQuantityOrdered(cartItems.get(i).getQuantity());
+                    orderDetail.setAlreadyReviewed(false);
+
+                    System.out.println("---> orderDetail: " + orderDetail);
+                    orderDetailRepository.save(orderDetail); // Commit to database
+                    LOG.debug("########## Created a new OrderDetail in the database ---> orderDetail: " + orderDetail + "##########");
+                    System.out.println("---> Created a new OrderDetail in the database.");
+
+                    System.out.println("---> cartItem: " + cartItems.get(i));
+                    cartItemRepository.delete(cartItems.get(i)); // Commit to database
+                    LOG.debug("########## Deleted a CartItem from the database ---> cartItem: " + cartItems.get(i) + "##########");
+                    System.out.println("---> Deleted a CartItem from the database.");
+
+                    product.setAvailability(product.getAvailability() - cartItems.get(i).getQuantity());
+
+                    System.out.println("---> product: " + product);
+                    productRepository.save(product); // Commit to database
+                    LOG.debug("########## Updated a Product in the database ---> product: " + product + "##########");
+                    System.out.println("---> Updated a Product in the database.");
+                }
+
+                checkoutMessages = "Successfully checkout! Thank you for doing business with us.";
+            } else {
+                checkoutErrorMessages = "Important messages about items in your cart... One or more items in your cart has changed quantities.";
+            }
+        }
+
+        cartItems = cartItemRepository.findCartItemsByUserObjectCart(user);
+
+        session.setAttribute("cartItems", cartItems);
+        session.setAttribute("checkoutMessages", checkoutMessages);
+        session.setAttribute("checkoutErrorMessages", checkoutErrorMessages);
+
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/remove")
+    public ModelAndView removePost(HttpServletRequest request, HttpSession session, @RequestParam(required = true) Integer proId) {
+        System.out.println("Method: " + request.getMethod() + "\t\tURI: " + request.getRequestURI());
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("cart/cart");
+
+        User user = userRepository.findUserById((Integer) session.getAttribute("userId"));
+        List<CartItem> cartItems = user.getCartItems();
+
+        for (int i = 0; i < cartItems.size(); i++) {
+
+            if (cartItems.get(i).getProductObjectCart().getId() == proId) {
 
                 System.out.println("---> cartItem: " + cartItems.get(i));
                 cartItemRepository.delete(cartItems.get(i)); // Commit to database
                 LOG.debug("########## Deleted a CartItem from the database ---> cartItem: " + cartItems.get(i) + "##########");
                 System.out.println("---> Deleted a CartItem from the database.");
 
-                product.setAvailability(product.getAvailability() - cartItems.get(i).getQuantity());
-
-                System.out.println("---> product: " + product);
-                productRepository.save(product); // Commit to database
-                LOG.debug("########## Updated a Product in the database ---> product: " + product + "##########");
-                System.out.println("---> Updated a Product in the database.");
+                break;
             }
-
-            checkoutMessages = "Successfully checkout! Thank you for doing business with us.";
         }
 
         cartItems = cartItemRepository.findCartItemsByUserObjectCart(user);
+
         session.setAttribute("cartItems", cartItems);
-        session.setAttribute("checkoutMessages", checkoutMessages);
+        session.setAttribute("checkoutMessages", null);
+        session.setAttribute("checkoutErrorMessages", null);
 
         return modelAndView;
     }
@@ -182,47 +240,48 @@ public class CartController {
 
         CartItem cartItem = cartItemRepository.findCartItemByUserObjectCartAndProductObjectCart(user, product);
 
-        Integer productQuantityInCart;
+        Integer newProductQuantityInCart = 0;
+        Integer oldProductQuantityInCart = 0;
+        if (cartItem != null) {
+            oldProductQuantityInCart = cartItem.getQuantity();
+        }
 
-        if (cartItem == null) {
+        newProductQuantityInCart = oldProductQuantityInCart + form.getProductQuantity();
 
-            cartItem = new CartItem();
+        if (newProductQuantityInCart <= product.getAvailability()) {
 
-            CartItemKey key = new CartItemKey();
-            key.setUserIdKey(user.getId());
-            key.setProductIdKey(product.getId());
+            if (cartItem == null) {
 
-            cartItem.setKey(key);
-            cartItem.setUserObjectCart(user);
-            cartItem.setProductObjectCart(product);
-            cartItem.setQuantity(form.getProductQuantity());
+                cartItem = new CartItem();
+
+                CartItemKey key = new CartItemKey();
+                key.setUserIdKey(user.getId());
+                key.setProductIdKey(product.getId());
+
+                cartItem.setKey(key);
+                cartItem.setUserObjectCart(user);
+                cartItem.setProductObjectCart(product);
+            }
+
+            cartItem.setQuantity(newProductQuantityInCart);
+
+            System.out.println("---> cartItem: " + cartItem);
+            cartItemRepository.save(cartItem); // Commit to database
+            LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
+            System.out.println("---> Created a new CartItem in the database.");
 
             cartMessagesGood = "Added to cart.";
-            productQuantityInCart = cartItem.getQuantity();
 
         } else {
 
-            productQuantityInCart = cartItem.getQuantity() + form.getProductQuantity();
+            newProductQuantityInCart = oldProductQuantityInCart;
 
-            if (productQuantityInCart <= product.getAvailability()) {
-                cartItem.setQuantity(productQuantityInCart);
-
-                cartMessagesGood = "Added to cart.";
-
-            } else {
-                cartMessagesBad = "Not enough product available.";
-            }
-
+            cartMessagesBad = "Not enough product available.";
         }
-
-        System.out.println("---> cartItem: " + cartItem);
-        cartItemRepository.save(cartItem); // Commit to database
-        LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
-        System.out.println("---> Created a new CartItem in the database.");
 
         session.setAttribute("subproduct", subproduct);
         session.setAttribute("product", product);
-        session.setAttribute("productQuantityInCart", productQuantityInCart);
+        session.setAttribute("productQuantityInCart", newProductQuantityInCart);
         modelAndView.addObject("cartMessagesGood", cartMessagesGood);
         modelAndView.addObject("cartMessagesBad", cartMessagesBad);
 
