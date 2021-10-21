@@ -152,6 +152,15 @@
                                                     <p class="mb-0">${orderDetail.productObject.subproductObject.itemObject.name}</p>
                                                     <p class="mb-3"><small>Size: ${orderDetail.productObject.size}</small></p>
                                                 </div>
+                                                <div class="col-1">
+
+                                                    <c:if test="${orderDetail.alreadyReviewed == false}">
+                                                        <a href="#" class="btn btn-warning btn-sm active mt-1" role="button" aria-pressed="true">
+                                                            <span>Review Product</span>
+                                                        </a>
+                                                    </c:if>
+
+                                                </div>
                                                 <div class="col-1 text-center">
                                                     <small>$<fmt:formatNumber type="number" maxFractionDigits="2"
                                                                               minFractionDigits="2"
@@ -161,7 +170,7 @@
                                                 <div class="col-1 text-center">
                                                     <p>${orderDetail.quantityOrdered}</p>
                                                 </div>
-                                                <div class="col-2 text-end">
+                                                <div class="col-1 text-end">
                                                     <c:set var="sum"
                                                            value="${orderDetail.quantityOrdered * orderDetail.productObject.price}"/>
                                                     <p><fmt:formatNumber type="currency" value="${sum}"/></p>

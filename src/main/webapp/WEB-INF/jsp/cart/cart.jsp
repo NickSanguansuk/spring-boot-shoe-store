@@ -47,7 +47,7 @@
                         <tr>
                             <td>
                                 <div class="text-start my-cart-info">
-                                    
+
                                     <form method="get" action="/search/detail">
                                         <input type="hidden" name="subId"
                                                value="${cartItem.productObjectCart.subproductObject.id}">
