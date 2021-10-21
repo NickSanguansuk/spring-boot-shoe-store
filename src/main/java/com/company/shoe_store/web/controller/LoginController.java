@@ -35,13 +35,10 @@ public class LoginController {
 
     //@Autowired
     private UserRepository userRepository;
-
     //@Autowired
     private UserRoleRepository userRoleRepository;
-
     //@Autowired
     private PasswordEncoder passwordEncoder;
-
     //@Autowired
     private AuthenticatedUserService authenticatedUserService;
 
@@ -155,7 +152,7 @@ public class LoginController {
         System.out.println("---> user: " + user);
         userRepository.save(user); // Commit to database
         LOG.debug("########## Created a new User in the database ---> user: " + user + "##########");
-        System.out.println("---> Added new User to the Database.");
+        System.out.println("---> Created a new User in the Database.");
 
         UserRole userRole = new UserRole();
 
@@ -165,7 +162,7 @@ public class LoginController {
         System.out.println("---> userRole: " + userRole);
         userRoleRepository.save(userRole); // Commit to database
         LOG.debug("########## Created a new UserRole in the database ---> userRole: " + userRole + "##########");
-        System.out.println("---> Added new UserRole (\"USER\") to the Database.");
+        System.out.println("---> Created a new UserRole (\"USER\") in the database.");
 
         // Go to the next page
         //session.setAttribute("userInfo", user);
@@ -197,19 +194,21 @@ public class LoginController {
             currentUsername = authentication.getName();
             User user = userRepository.findUserByEmail(currentUsername);
             String messageStr = user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")";
-            modelAndView.addObject("welcomeUserMessage", messageStr);
-            //modelAndView.addObject("userFirstNameDisplay", user.getFirstName());
-            session.setAttribute("userFirstNameDisplay", user.getFirstName());
-
-            session.setAttribute("userId", user.getId());
 
             List<UserRole> userRoles = user.getUserRoles();
             String accountType = "USER";
             for (UserRole ur : userRoles) {
                 if (ur.getRole().equals(UserRole.Role.ADMIN)) {
-                    accountType = "ADMIN";
+                    accountType = "USER, ADMIN";
                 }
             }
+
+            modelAndView.addObject("welcomeUserMessage", messageStr);
+            modelAndView.addObject("userForInbox", user);
+            modelAndView.addObject("orderList", user.getOrders());
+
+            session.setAttribute("userId", user.getId());
+            session.setAttribute("userFirstNameDisplay", user.getFirstName());
             session.setAttribute("accountType", accountType);
         } else {
             System.out.println("---> User needs to log in first.");
@@ -298,7 +297,7 @@ public class LoginController {
         System.out.println("---> user: " + user);
         userRepository.save(user); // Commit to database
         LOG.debug("########## Updated a User in the database ---> user: " + user + "##########");
-        System.out.println("---> Updated User in the Database.");
+        System.out.println("---> Updated a User in the database.");
 
         // Correct the display name
         session.setAttribute("userFirstNameDisplay", user.getFirstName());

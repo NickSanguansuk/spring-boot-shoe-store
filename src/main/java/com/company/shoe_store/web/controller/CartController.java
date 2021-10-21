@@ -57,6 +57,8 @@ public class CartController {
         List<CartItem> cartItems = user.getCartItems();
         //List<CartItem> cartItems = cartItemRepository.findCartItemsByUserObjectCart(user);
 
+        String checkoutMessages = null;
+        session.setAttribute("checkoutMessages", checkoutMessages);
         session.setAttribute("cartItems", cartItems);
 
         return modelAndView;
@@ -86,7 +88,7 @@ public class CartController {
             System.out.println("---> order: " + order);
             orderRepository.save(order); // Commit to database
             LOG.debug("########## Created a new Order in the database ---> order: " + order + "##########");
-            System.out.println("---> Added new Order to the Database.");
+            System.out.println("---> Created a new Order in the database.");
 
             for (int i = 0; i < cartItems.size(); i++) {
 
@@ -107,9 +109,19 @@ public class CartController {
                 System.out.println("---> orderDetail: " + orderDetail);
                 orderDetailRepository.save(orderDetail); // Commit to database
                 LOG.debug("########## Created a new OrderDetail in the database ---> orderDetail: " + orderDetail + "##########");
-                System.out.println("---> Added new OrderDetail to the Database.");
+                System.out.println("---> Created a new OrderDetail in the database.");
 
-                cartItemRepository.delete(cartItems.get(i));
+                System.out.println("---> cartItem: " + cartItems.get(i));
+                cartItemRepository.delete(cartItems.get(i)); // Commit to database
+                LOG.debug("########## Deleted a CartItem from the database ---> cartItem: " + cartItems.get(i) + "##########");
+                System.out.println("---> Deleted a CartItem from the database.");
+
+                product.setAvailability(product.getAvailability() - cartItems.get(i).getQuantity());
+
+                System.out.println("---> product: " + product);
+                productRepository.save(product); // Commit to database
+                LOG.debug("########## Updated a Product in the database ---> product: " + product + "##########");
+                System.out.println("---> Updated a Product in the database.");
             }
 
             checkoutMessages = "Successfully checkout! Thank you for doing business with us.";
@@ -206,7 +218,7 @@ public class CartController {
         System.out.println("---> cartItem: " + cartItem);
         cartItemRepository.save(cartItem); // Commit to database
         LOG.debug("########## Created a new CartItem in the database ---> cartItem: " + cartItem + "##########");
-        System.out.println("---> Added new Product to the Cart (Database).");
+        System.out.println("---> Created a new CartItem in the database.");
 
         session.setAttribute("subproduct", subproduct);
         session.setAttribute("product", product);

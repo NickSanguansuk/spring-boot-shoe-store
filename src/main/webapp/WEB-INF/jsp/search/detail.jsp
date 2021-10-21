@@ -36,7 +36,7 @@
     <section class="bg-light text-dark p-4 text-center my-section-container">
         <div class="container-fluid px-0">
             <div class="text-start">
-                <p><small>HOME / ${subproduct.itemObject.gender} / ${subproduct.itemObject.category}</small></p>
+                <p><small>HOME / ${subproduct.itemObject.gender} / ${subproduct.itemObject.category} / <span class="text-uppercase">${subproduct.itemObject.brand}</span> <span class="text-white">/ ${product.id}</span></small></p>
             </div>
             <div class="row my-product-detail">
                 <div class="col-12 col-md-5 col-lg-5">
