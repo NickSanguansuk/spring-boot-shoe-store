@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @PreAuthorize("hasAuthority('USER')")
@@ -172,7 +173,9 @@ public class CartController {
 
         for (int i = 0; i < cartItems.size(); i++) {
 
-            if (cartItems.get(i).getProductObjectCart().getId() == proId) {
+            System.out.println(cartItems.get(i).getProductObjectCart().getId());
+
+            if (Objects.equals(cartItems.get(i).getProductObjectCart().getId(), proId)) {
 
                 System.out.println("---> cartItem: " + cartItems.get(i));
                 cartItemRepository.delete(cartItems.get(i)); // Commit to database
