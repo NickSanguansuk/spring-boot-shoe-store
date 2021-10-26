@@ -126,7 +126,6 @@
                     </c:if>
                 </div>
             </form>
-            // Debugging
 
         </div>
     </section>
