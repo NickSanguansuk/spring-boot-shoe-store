@@ -61,7 +61,15 @@
                                                                                                 maxFractionDigits="2"
                                                                                                 minFractionDigits="2"
                                                                                                 value="${subproduct.products[0].price}"/></p>
+
+
+
+
                                                     <p class="card-text m-0">[ ${subproduct.itemObject.starRating} ]</p>
+
+
+
+                                                    
                                                 </div>
                                             </div>
                                         </div>
