@@ -65,10 +65,12 @@
 
 
 
+
                                                     <p class="card-text m-0">[ ${subproduct.itemObject.starRating} ]</p>
 
 
 
+                                                    
 
                                                 </div>
                                             </div>
